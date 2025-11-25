@@ -14,10 +14,10 @@ const ChatBubble = ({ message, className = '' }) => {
       } ${className}`}
     >
       <div
-        className={`max-w-[85%] rounded-3xl px-6 py-4 ${
+        className={`max-w-[85%] px-6 py-4 ${
           isAssistant
-            ? 'bg-pearl-surface/80 backdrop-blur-sm text-pearl-text-primary border border-pearl-border-soft shadow-pearl-shadow'
-            : 'bg-gradient-to-r from-pearl-accent to-pearl-accent-soft text-white ml-auto shadow-pearl-shadow'
+            ? 'bubble-pearl shadow-pearl-soft'
+            : 'bubble-user shadow-pearl-soft ml-auto'
         }`}
       >
         <MarkdownRenderer

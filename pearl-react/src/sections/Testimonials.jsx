@@ -12,10 +12,10 @@ const Testimonials = ({ className = '' }) => {
     <section className={`py-24 bg-pearl-bg ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <h2 className="text-4xl font-bold text-pearl-text-primary mb-6">
+          <h2 className="text-4xl font-bold text-pearl-text mb-6">
             What People Say
           </h2>
-          <p className="text-xl text-pearl-text-secondary max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-pearl-muted max-w-3xl mx-auto mb-8">
             Early experiences with PEARL from our community
           </p>
         </div>
@@ -24,12 +24,12 @@ const Testimonials = ({ className = '' }) => {
           {TESTIMONIALS.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-pearl-surface/75 backdrop-blur-sm p-8 rounded-3xl shadow-pearl-shadow border border-pearl-border-soft hover:shadow-pearl-shadow transition-shadow cursor-default"
+              className="pearl-card p-8 shadow-pearl-soft hover:shadow-pearl-soft transition-shadow cursor-default"
             >
-              <blockquote className="text-lg text-pearl-text-secondary mb-6 leading-relaxed">
+              <blockquote className="text-lg text-pearl-muted mb-6 leading-relaxed">
                 "{testimonial.quote}"
               </blockquote>
-              <cite className="text-pearl-text-primary font-medium">
+              <cite className="text-pearl-text font-medium">
                 {testimonial.author}
               </cite>
             </div>

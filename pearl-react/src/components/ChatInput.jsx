@@ -56,7 +56,7 @@ const ChatInput = ({ onSendMessage, isDisabled = false }) => {
           placeholder="Describe a health concern, medical term, or appointment worry in your own words..."
           disabled={isDisabled}
           rows={1}
-          className="w-full px-5 py-4 bg-pearl-surface/75 backdrop-blur-sm border border-pearl-border-soft rounded-3xl resize-none focus:outline-none focus:ring-2 focus:ring-pearl-accent focus:border-pearl-accent placeholder-pearl-text-secondary text-pearl-text-primary min-h-[48px] max-h-32 overflow-y-auto"
+          className="w-full px-5 py-4 bg-pearl-surface/75 backdrop-blur-sm border border-pearl-border rounded-3xl resize-none focus:outline-none focus:ring-2 focus:ring-accent-iridescent focus:border-accent-iridescent placeholder-pearl-muted text-pearl-text min-h-[48px] max-h-32 overflow-y-auto"
         />
       </div>
       <Button

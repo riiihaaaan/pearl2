@@ -18,10 +18,10 @@ const Features = ({ className = '', id = 'features' }) => {
     >
       <div ref={sectionRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
-          <h2 className="text-4xl font-bold text-pearl-text-primary mb-6">
+          <h2 className="text-4xl font-bold text-pearl-text mb-6">
             How PEARL Helps You
           </h2>
-          <p className="text-xl text-pearl-text-secondary max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-pearl-muted max-w-3xl mx-auto mb-8">
             Get clear, actionable information about your health without overwhelming jargon.
             PEARL provides helpful explanations and preparation tips for your medical journey.
           </p>
@@ -42,15 +42,15 @@ const Features = ({ className = '', id = 'features' }) => {
         <div className="grid sm:grid-cols-3 gap-8">
           <div className="text-center">
             <AnimatedCounter targetValue={100} suffix="%" className="text-4xl" />
-            <p className="text-pearl-text-secondary mt-2">Privacy Focused</p>
+            <p className="text-pearl-muted mt-2">Privacy Focused</p>
           </div>
           <div className="text-center">
             <AnimatedCounter targetValue={0} suffix=" Cloud" className="text-4xl" />
-            <p className="text-pearl-text-secondary mt-2">Cloud Usage</p>
+            <p className="text-pearl-muted mt-2">Cloud Usage</p>
           </div>
           <div className="text-center">
             <AnimatedCounter targetValue={24} suffix="/7" className="text-4xl" />
-            <p className="text-pearl-text-secondary mt-2">Local Access</p>
+            <p className="text-pearl-muted mt-2">Local Access</p>
           </div>
         </div>
       </div>
@@ -64,13 +64,13 @@ const FeatureCard = ({ useCardHover, feature }) => {
   return (
     <div
       ref={cardRef}
-      className="bg-pearl-surface/75 backdrop-blur-sm p-8 rounded-3xl border border-pearl-border-soft cursor-default"
+      className="pearl-card p-8 shadow-pearl-soft cursor-default"
     >
       <div className="text-4xl mb-4">{feature.icon}</div>
-      <h3 className="text-xl font-semibold text-pearl-text-primary mb-3">
+      <h3 className="text-xl font-semibold text-pearl-text mb-3">
         {feature.title}
       </h3>
-      <p className="text-pearl-text-secondary">
+      <p className="text-pearl-muted">
         {feature.description}
       </p>
     </div>

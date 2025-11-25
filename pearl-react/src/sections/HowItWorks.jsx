@@ -18,10 +18,10 @@ const HowItWorks = ({ className = '', id = 'how-it-works' }) => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={headerRef} className="text-center mb-20">
-          <h2 className="text-4xl font-bold text-pearl-text-primary mb-6">
+          <h2 className="text-4xl font-bold text-pearl-text mb-6">
             How It Works
           </h2>
-          <p className="text-xl text-pearl-text-secondary max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-pearl-muted max-w-3xl mx-auto mb-8">
             Your personal medical companion is always available to provide clear, actionable health information.
           </p>
         </div>
@@ -74,9 +74,9 @@ const ConnectingLine = ({ visible }) => {
         />
         <defs>
           <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="rgba(108, 197, 244, 0.3)" />
-            <stop offset="50%" stopColor="rgba(173, 216, 230, 0.5)" />
-            <stop offset="100%" stopColor="rgba(108, 197, 244, 0.3)" />
+            <stop offset="0%" stopColor="rgba(154,179,255, 0.3)" />
+            <stop offset="50%" stopColor="rgba(214,219,255, 0.5)" />
+            <stop offset="100%" stopColor="rgba(154,179,255, 0.3)" />
           </linearGradient>
         </defs>
       </svg>
@@ -85,14 +85,14 @@ const ConnectingLine = ({ visible }) => {
 };
 
 const StepCard = ({ step }) => (
-  <div className="step-card bg-pearl-surface/75 backdrop-blur-sm p-8 rounded-3xl border border-pearl-border-soft shadow-pearl-shadow cursor-default flex flex-col items-center text-center max-w-sm">
-    <div className="w-16 h-16 bg-gradient-to-br from-pearl-accent to-pearl-accent-soft rounded-full flex items-center justify-center text-white font-bold text-2xl mb-6 shadow-pearl-shadow">
+  <div className="step-card pearl-card p-8 shadow-pearl-soft cursor-default flex flex-col items-center text-center max-w-sm">
+    <div className="w-16 h-16 bg-gradient-to-br from-accent-iridescent to-accent-iridescent-200 rounded-full flex items-center justify-center text-white font-bold text-2xl mb-6 shadow-pearl-soft">
       {step.number}
     </div>
-    <h3 className="text-2xl font-semibold text-pearl-text-primary mb-3">
+    <h3 className="text-2xl font-semibold text-pearl-text mb-3">
       {step.title}
     </h3>
-    <p className="text-pearl-text-secondary">
+    <p className="text-pearl-muted">
       {step.description}
     </p>
   </div>

@@ -7,38 +7,40 @@ export default {
   theme: {
     extend: {
       colors: {
-        pearl: {
-          bg: '#fefdfb', // soft off-white background
-          surface: 'rgba(255, 255, 255, 0.75)', // translucent card surface
-          'border-soft': 'rgba(255, 255, 255, 0.4)', // soft border
-          'text-primary': '#405364', // updated primary for readability
-          'text-secondary': '#647b8a', // soft blue-gray
-          accent: '#a09edd', // iridescent blue-lavender
-          'accent-soft': '#c2c7e4',
-          'gradient': 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, #cbcad3 25%, #a09edd 50%, #8b94b7 100%)', // pearl orb gradient
-          shadow: '0 8px 32px rgba(0, 0, 0, 0.1)', // soft wide drop shadow
-        },
+        'pearl-bg': '#FAFBFF',
+        'pearl-surface': 'rgba(255,255,255,0.62)',
+        'pearl-border': 'rgba(200,210,230,0.55)',
+        'pearl-text': '#2B3547',
+        'pearl-muted': '#6B7280',
+        'accent-iridescent': '#9AB3FF',
+        'accent-iridescent-200': '#D6DBFF',
+        'line-soft': 'rgba(140,160,210,0.45)',
       },
       backgroundColor: {
-        'pearl-bg': '#fefdfb',
-        'pearl-surface': 'rgba(255, 255, 255, 0.75)',
+        'pearl-bg': '#FAFBFF',
+        'pearl-surface': 'rgba(255,255,255,0.62)',
       },
       backgroundImage: {
-        'pearl-gradient': 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, #cbcad3 50%, #a09edd 100%)', // subtle for hero bg
+        'pearl-gradient': 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, #cbcad3 50%, #9AB3FF 100%)', // subtle for hero bg
       },
       textColor: {
-        'pearl-text-primary': '#405364',
-        'pearl-text-secondary': '#647b8a',
-        'pearl-accent': '#a09edd',
+        'pearl-text': '#2B3547',
+        'pearl-muted': '#6B7280',
+        'accent-iridescent': '#9AB3FF',
       },
       borderColor: {
-        'pearl-border-soft': 'rgba(255, 255, 255, 0.4)',
+        'pearl-border': 'rgba(200,210,230,0.55)',
+        'line-soft': 'rgba(140,160,210,0.45)',
       },
       boxShadow: {
-        'pearl-shadow': '0 8px 32px rgba(0, 0, 0, 0.1)',
+        'pearl-soft': '0 20px 40px rgba(138,160,220,0.10)',
+        'pearl-orb': '0 0 0 20px rgba(154,179,255,0.2)',
+      },
+      borderRadius: {
+        'xl-4': '24px',
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'], // modern friendly sans
+        'Inter': ['Inter', 'sans-serif'],
       },
     },
   },

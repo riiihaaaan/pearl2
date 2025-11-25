@@ -23,14 +23,14 @@ const Hero = ({ className = '', id = 'hero' }) => {
   return (
     <section
       id={id}
-      className={`relative min-h-screen bg-pearl-gradient overflow-hidden ${className}`}
+      className={`relative min-h-screen bg-pearl-bg overflow-hidden ${className}`}
     >
       <NavBar />
 
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-accent-highlight rounded-full opacity-10 blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-accent-light rounded-full opacity-8 blur-3xl"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-pearl-decal"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-pearl-decal"></div>
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24">
@@ -39,12 +39,12 @@ const Hero = ({ className = '', id = 'hero' }) => {
           {/* Left: Hero Content */}
           <div ref={textRef} className="space-y-8">
             <div className="space-y-6">
-              <h1 className="text-5xl lg:text-6xl font-bold text-pearl-primary leading-tight">
+              <h1 className="text-5xl lg:text-6xl font-bold text-pearl-text leading-tight">
                 Meet PEARL — Your Gentle,
-                <span className="text-accent-blue"> Local</span> AI Health Guide
+                <span className="text-accent-iridescent"> Local</span> AI Health Guide
               </h1>
 
-              <p className="text-xl text-pearl-secondary leading-relaxed">
+              <p className="text-xl text-pearl-muted leading-relaxed">
                 Discover general health information and medical explanations from an AI that stays completely private.
                 Everything runs locally on your device with Llama 3 — zero cloud data ever leaves your computer.
               </p>
@@ -71,15 +71,15 @@ const Hero = ({ className = '', id = 'hero' }) => {
             </div>
 
             {/* Trust indicators */}
-            <div className="bg-pearl-surface/75 backdrop-blur-sm rounded-3xl p-6 border border-pearl-border-soft shadow-pearl-shadow">
+            <div className="pearl-card p-6 shadow-pearl-soft">
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-accent-blue">0%</div>
-                  <p className="text-sm text-pearl-secondary">Cloud Usage</p>
+                  <div className="text-2xl font-bold text-accent-iridescent">0%</div>
+                  <p className="text-sm text-pearl-muted">Cloud Usage</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-accent-blue">24/7</div>
-                  <p className="text-sm text-pearl-secondary">Availability</p>
+                  <div className="text-2xl font-bold text-accent-iridescent">24/7</div>
+                  <p className="text-sm text-pearl-muted">Availability</p>
                 </div>
               </div>
             </div>
@@ -96,12 +96,12 @@ const Hero = ({ className = '', id = 'hero' }) => {
         {/* Mobile Layout */}
         <div className="lg:hidden space-y-12 pt-8">
           <div className="space-y-8">
-            <h1 className="text-4xl font-bold text-pearl-primary leading-tight text-center">
+            <h1 className="text-4xl font-bold text-pearl-text leading-tight text-center">
               Meet PEARL — Your Gentle,
-              <span className="text-accent-blue"> Local</span> AI Health Guide
+              <span className="text-accent-iridescent"> Local</span> AI Health Guide
             </h1>
 
-            <p className="text-lg text-pearl-secondary leading-relaxed text-center max-w-2xl mx-auto">
+            <p className="text-lg text-pearl-muted leading-relaxed text-center max-w-2xl mx-auto">
               Discover general health information and medical explanations from an AI that stays completely private.
               Everything runs locally on your device with Llama 3 — zero cloud data ever leaves your computer.
             </p>
@@ -131,15 +131,15 @@ const Hero = ({ className = '', id = 'hero' }) => {
           </div>
 
           {/* Mobile trust indicators */}
-          <div className="bg-pearl-surface/75 backdrop-blur-sm rounded-3xl p-6 border border-pearl-border-soft shadow-pearl-shadow max-w-md mx-auto">
+          <div className="pearl-card p-6 shadow-pearl-soft max-w-md mx-auto">
             <div className="grid grid-cols-2 gap-6 text-center">
               <div>
-                <div className="text-2xl font-bold text-pearl-accent">0%</div>
-                <p className="text-sm text-pearl-text-secondary">Cloud Usage</p>
+                <div className="text-2xl font-bold text-accent-iridescent">0%</div>
+                <p className="text-sm text-pearl-muted">Cloud Usage</p>
               </div>
               <div>
-                <div className="text-2xl font-bold text-pearl-accent">24/7</div>
-                <p className="text-sm text-pearl-text-secondary">Availability</p>
+                <div className="text-2xl font-bold text-accent-iridescent">24/7</div>
+                <p className="text-sm text-pearl-muted">Availability</p>
               </div>
             </div>
           </div>
