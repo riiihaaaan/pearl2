@@ -67,10 +67,10 @@ const FeatureCard = ({ useCardHover, feature }) => {
       className="pearl-card p-6 md:p-8 shadow-pearl-soft cursor-default h-full flex flex-col"
     >
       <div className="text-4xl mb-4 shrink-0">{feature.icon}</div>
-      <h3 className="text-lg font-semibold text-pearl-text mb-3">
+      <h3 className="text-lg font-semibold text-pearl-text mb-3 max-w-prose">
         {feature.title}
       </h3>
-      <p className="text-sm text-pearl-muted leading-relaxed grow">
+      <p className="text-sm text-pearl-muted leading-relaxed grow max-w-prose">
         {feature.description}
       </p>
     </div>

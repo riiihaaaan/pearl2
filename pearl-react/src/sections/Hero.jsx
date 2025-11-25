@@ -26,7 +26,7 @@ const Hero = ({ className = '', id = 'hero' }) => {
   return (
     <section
       id={id}
-      className={`relative min-h-screen bg-pearl-bg overflow-hidden ${className}`}
+      className={`relative min-h-screen bg-pearl-gradient overflow-hidden ${className}`}
     >
       <NavBar />
 

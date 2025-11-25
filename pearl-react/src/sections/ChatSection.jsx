@@ -14,7 +14,7 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
     <section
       id={id}
       className={`min-h-screen bg-pearl-bg py-16 ${className}`}
-      style={{ position: 'relative', zIndex: 30 }} style={{ position: 'relative', zIndex: 30 }}
+      style={{ position: 'relative', zIndex: 30 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Desktop Layout (side by side) */}
@@ -36,21 +36,21 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
             <div className="space-y-3">
               <button
                 onClick={() => sendMessage("What does 'hypertension' mean?")}
-                className="w-full text-left p-3 bg-pearl-surface/50 backdrop-blur-sm rounded-2xl hover:bg-pearl-surface transition-colors border border-pearl-border text-pearl-muted hover:text-pearl-text"
+                className="w-full pearl-card p-3 text-left text-pearl-muted hover:text-pearl-text"
                 disabled={isLoading}
               >
                 What does "hypertension" mean?
               </button>
               <button
                 onClick={() => sendMessage("How should I prepare for a doctor's visit?")}
-                className="w-full text-left p-3 bg-pearl-surface/50 backdrop-blur-sm rounded-2xl hover:bg-pearl-surface transition-colors border border-pearl-border text-pearl-muted hover:text-pearl-text"
+                className="w-full pearl-card p-3 text-left text-pearl-muted hover:text-pearl-text"
                 disabled={isLoading}
               >
                 How should I prepare for a doctor's visit?
               </button>
               <button
                 onClick={() => sendMessage("What are common healthy eating guidelines?")}
-                className="w-full text-left p-3 bg-pearl-surface/50 backdrop-blur-sm rounded-2xl hover:bg-pearl-surface transition-colors border border-pearl-border text-pearl-muted hover:text-pearl-text"
+                className="w-full pearl-card p-3 text-left text-pearl-muted hover:text-pearl-text"
                 disabled={isLoading}
               >
                 What are common healthy eating guidelines?
