@@ -85,14 +85,14 @@ const ConnectingLine = ({ visible }) => {
 };
 
 const StepCard = ({ step }) => (
-  <div className="step-card pearl-card p-8 shadow-pearl-soft cursor-default flex flex-col items-center text-center max-w-sm">
-    <div className="w-16 h-16 bg-gradient-to-br from-accent-iridescent to-accent-iridescent-200 rounded-full flex items-center justify-center text-white font-bold text-2xl mb-6 shadow-pearl-soft">
+  <div className="step-card pearl-card p-8 shadow-pearl-soft cursor-default flex flex-col items-center text-center min-h-80 w-full md:w-72">
+    <div className="w-16 h-16 bg-linear-to-br from-accent-iridescent to-accent-iridescent-2 rounded-full flex items-center justify-center text-white font-bold text-2xl mb-6 shadow-pearl-soft shrink-0">
       {step.number}
     </div>
-    <h3 className="text-2xl font-semibold text-pearl-text mb-3">
+    <h3 className="text-xl font-semibold text-pearl-text mb-4 line-clamp-2">
       {step.title}
     </h3>
-    <p className="text-pearl-muted">
+    <p className="text-sm text-pearl-muted leading-relaxed grow">
       {step.description}
     </p>
   </div>

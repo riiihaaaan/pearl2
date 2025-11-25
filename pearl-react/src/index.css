@@ -1,6 +1,44 @@
 @import "tailwindcss";
 
-/* Custom utilities */
+/* 
+  PEARL Design System & Styling Standards
+  ========================================
+  
+  COLOR TOKENS:
+  - Background: var(--pearl-bg) - Main page background
+  - Surface: var(--pearl-surface) - Card backgrounds
+  - Text: var(--pearl-text) - Primary text color
+  - Muted: var(--pearl-muted) - Secondary/disabled text
+  - Border: var(--pearl-border) - Card borders
+  - Accent: var(--accent-iridescent) - Primary button/highlight color
+  - Accent 2: var(--accent-iridescent-2) - Secondary accent
+  - Shadow: var(--shadow-pearl) - Card shadows
+  
+  TYPOGRAPHY STANDARDS:
+  - H2 headings: text-4xl font-bold text-pearl-text
+  - H3 headings: text-lg font-semibold text-pearl-text
+  - Body text: text-pearl-muted with line-height: 1.6
+  - Small text: text-sm text-pearl-muted
+  
+  CARD STANDARDS:
+  - Base: pearl-card (includes backdrop blur, border, shadow)
+  - Padding: p-8 standard for all cards (32px)
+  - Min heights: min-h-72 (Features), min-h-80 (Steps), min-h-64 (Testimonials)
+  - Flex layout: h-full flex flex-col for content distribution
+  - Content text: text-sm for descriptions
+  
+  SPACING STANDARDS:
+  - Section padding: py-24
+  - Container: max-w-7xl mx-auto px-4 sm:px-6 lg:px-8
+  - Gap between cards: gap-10 (md+), gap-8 (within cards)
+  - Heading spacing: mb-20 for section headers, mb-8 for descriptions
+  
+  RESPONSIVE BEHAVIOR:
+  - Mobile-first approach
+  - md: breakpoint for tablet layout
+  - lg: breakpoint for desktop layout
+  - Always test on sm (320px), md (768px), lg (1024px), xl (1280px)
+*/
 
 @layer base {
   :root {
@@ -43,10 +81,13 @@
     line-height: 1.6;
   }
 
+  /* CARD COMPONENT STANDARD
+     All cards should use this base + p-8 + shadow-pearl-soft + h-full flex flex-col
+     This ensures consistent appearance and content distribution */
   .pearl-card {
     background: var(--pearl-surface);
-    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     border: 1px solid var(--pearl-border);
     border-radius: 24px;
     box-shadow: var(--shadow-pearl);

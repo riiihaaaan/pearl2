@@ -2,14 +2,17 @@ import React from 'react';
 import NavBar from '../components/NavBar';
 import Button from '../components/Button';
 import PearlSceneCanvas from '../components/models/PearlSceneCanvas';
+import InteractiveGraph from '../components/InteractiveGraph';
 import { usePearlAnimations } from '../hooks/usePearlAnimations';
+import { usePearlChat } from '../hooks/usePearlChat';
 
 /**
- * Hero section with navigation and 3D pearl
+ * Hero section with navigation and interactive graph
  */
 const Hero = ({ className = '', id = 'hero' }) => {
   const { useHeroElements, useButtonHover } = usePearlAnimations();
   const { textRef, buttonsRef } = useHeroElements();
+  const { isLoading } = usePearlChat();
   const heroButtonRef1 = useButtonHover();
   const heroButtonRef2 = useButtonHover();
 
@@ -71,24 +74,24 @@ const Hero = ({ className = '', id = 'hero' }) => {
             </div>
 
             {/* Trust indicators */}
-            <div className="pearl-card p-6 shadow-pearl-soft">
-              <div className="grid grid-cols-2 gap-6">
+            <div className="pearl-card p-8 shadow-pearl-soft">
+              <div className="grid grid-cols-2 gap-8">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-accent-iridescent">0%</div>
+                  <div className="text-3xl font-bold text-accent-iridescent mb-2">0%</div>
                   <p className="text-sm text-pearl-muted">Cloud Usage</p>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-accent-iridescent">24/7</div>
+                  <div className="text-3xl font-bold text-accent-iridescent mb-2">24/7</div>
                   <p className="text-sm text-pearl-muted">Availability</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right: 3D Pearl Canvas */}
+          {/* Right: Interactive Graph */}
           <div className="order-first lg:order-last">
-            <div className="relative">
-              <PearlSceneCanvas className="h-[400px] lg:h-[500px]" />
+            <div className="relative h-[400px] lg:h-[500px]">
+              <InteractiveGraph isLoading={isLoading} />
             </div>
           </div>
         </div>
@@ -131,14 +134,14 @@ const Hero = ({ className = '', id = 'hero' }) => {
           </div>
 
           {/* Mobile trust indicators */}
-          <div className="pearl-card p-6 shadow-pearl-soft max-w-md mx-auto">
-            <div className="grid grid-cols-2 gap-6 text-center">
+          <div className="pearl-card p-8 shadow-pearl-soft max-w-md mx-auto">
+            <div className="grid grid-cols-2 gap-8 text-center">
               <div>
-                <div className="text-2xl font-bold text-accent-iridescent">0%</div>
+                <div className="text-3xl font-bold text-accent-iridescent mb-2">0%</div>
                 <p className="text-sm text-pearl-muted">Cloud Usage</p>
               </div>
               <div>
-                <div className="text-2xl font-bold text-accent-iridescent">24/7</div>
+                <div className="text-3xl font-bold text-accent-iridescent mb-2">24/7</div>
                 <p className="text-sm text-pearl-muted">Availability</p>
               </div>
             </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { TESTIMONIALS } from '../constants';
-import { useStaggeredAnimation, useScrollAnimation } from '../hooks/useScrollAnimation';
+import { useStaggeredAnimation} from '../hooks/useScrollAnimation';
 
 /**
  * Testimonials section
@@ -24,12 +24,12 @@ const Testimonials = ({ className = '' }) => {
           {TESTIMONIALS.map((testimonial, index) => (
             <div
               key={index}
-              className="pearl-card p-8 shadow-pearl-soft hover:shadow-pearl-soft transition-shadow cursor-default"
+              className="pearl-card p-8 shadow-pearl-soft hover:shadow-pearl-soft transition-shadow cursor-default h-full flex flex-col min-h-64"
             >
-              <blockquote className="text-lg text-pearl-muted mb-6 leading-relaxed">
+              <blockquote className="text-base text-pearl-muted mb-6 leading-relaxed grow">
                 "{testimonial.quote}"
               </blockquote>
-              <cite className="text-pearl-text font-medium">
+              <cite className="text-pearl-text font-semibold text-sm">
                 {testimonial.author}
               </cite>
             </div>

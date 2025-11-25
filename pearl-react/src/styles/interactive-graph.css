@@ -1,0 +1,263 @@
+/**
+ * Interactive Graph Component Styles
+ *
+ * Defines styles for:
+ * - Container and SVG layout
+ * - Node badges and interactions
+ * - Connector path animations
+ * - Reset button styling
+ * - Responsive adjustments
+ */
+
+/* Main container */
+.interactive-graph-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* SVG connector paths */
+.interactive-graph-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.interactive-graph-connector {
+  stroke: var(--line-soft);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.interactive-graph-connector:hover {
+  opacity: 1;
+}
+
+/* Central pearl */
+.interactive-graph-pearl {
+  position: absolute;
+  z-index: 10;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: var(--shadow-pearl);
+  will-change: transform;
+  flex-shrink: 0;
+}
+
+.interactive-graph-pearl img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Node wrapper and badge */
+.interactive-graph-node-wrapper {
+  position: absolute;
+  z-index: 5;
+  cursor: grab;
+  outline: none;
+}
+
+.interactive-graph-node-wrapper:focus {
+  outline: 2px solid var(--accent-iridescent);
+  outline-offset: 4px;
+}
+
+.interactive-graph-node-wrapper:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.interactive-graph-node-wrapper:focus-visible {
+  outline: 2px solid var(--accent-iridescent);
+  outline-offset: 4px;
+}
+
+.interactive-graph-node {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--pearl-surface);
+  border: 2px solid var(--accent-iridescent-2);
+  box-shadow: var(--shadow-pearl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transform: scale(1);
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+  will-change: transform;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.interactive-graph-node img {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+.interactive-graph-node.active,
+.interactive-graph-node-wrapper:focus-visible .interactive-graph-node {
+  transform: scale(1.06);
+  box-shadow: 0 0 20px var(--accent-iridescent), var(--shadow-pearl);
+}
+
+/* Hover state for node */
+.interactive-graph-node-wrapper:hover .interactive-graph-node {
+  box-shadow: 0 0 15px rgba(154, 179, 255, 0.4), var(--shadow-pearl);
+}
+
+/* Node label */
+.interactive-graph-node-wrapper > div:last-child {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--pearl-muted);
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  opacity: 0.8;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+.interactive-graph-node-wrapper:hover > div:last-child {
+  opacity: 1;
+}
+
+/* Reset button */
+.interactive-graph-reset-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 15;
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--accent-iridescent);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: var(--shadow-pearl);
+  transition: all 0.2s ease;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.interactive-graph-reset-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(154, 179, 255, 0.3);
+}
+
+.interactive-graph-reset-btn:active {
+  transform: translateY(0);
+}
+
+.interactive-graph-reset-btn:focus {
+  outline: 2px solid var(--accent-iridescent);
+  outline-offset: 2px;
+}
+
+.interactive-graph-reset-btn:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .interactive-graph-pearl {
+    animation: none !important;
+  }
+
+  .interactive-graph-node,
+  .interactive-graph-reset-btn {
+    transition: none !important;
+  }
+
+  .interactive-graph-connector {
+    stroke-dashoffset: 0 !important;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .interactive-graph-container {
+    min-height: 400px;
+  }
+
+  .interactive-graph-pearl {
+    width: 100px;
+    height: 100px;
+  }
+
+  .interactive-graph-node {
+    width: 80px;
+    height: 80px;
+  }
+
+  .interactive-graph-node-wrapper > div:last-child {
+    font-size: 11px;
+  }
+
+  .interactive-graph-reset-btn {
+    bottom: 12px;
+    right: 12px;
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .interactive-graph-container {
+    min-height: 300px;
+  }
+
+  .interactive-graph-pearl {
+    width: 80px;
+    height: 80px;
+  }
+
+  .interactive-graph-node {
+    width: 70px;
+    height: 70px;
+  }
+
+  .interactive-graph-node-wrapper > div:last-child {
+    font-size: 10px;
+  }
+
+  .interactive-graph-reset-btn {
+    bottom: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    font-size: 10px;
+  }
+}
