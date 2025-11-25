@@ -45,7 +45,7 @@ const ChatInput = ({ onSendMessage, isDisabled = false }) => {
   }, [isDisabled]);
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-3 p-4 bg-pearl-base-100 border-t border-pearl-border-soft">
+    <form onSubmit={handleSubmit} className="flex gap-3 p-6 bg-pearl-bg border-t border-pearl-border-soft">
       <div className="flex-1 relative">
         <textarea
           ref={textareaRef}
@@ -55,14 +55,14 @@ const ChatInput = ({ onSendMessage, isDisabled = false }) => {
           placeholder="Ask PEARL about health questions, medical terms, or prepare for your doctor's visit..."
           disabled={isDisabled}
           rows={1}
-          className="w-full px-4 py-3 bg-pearl-base-200 border border-pearl-border-soft rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-accent-blue focus:border-accent-blue placeholder-pearl-text-secondary text-pearl-text-primary min-h-[44px] max-h-32 overflow-y-auto"
+          className="w-full px-5 py-4 bg-pearl-surface/75 backdrop-blur-sm border border-pearl-border-soft rounded-3xl resize-none focus:outline-none focus:ring-2 focus:ring-pearl-accent focus:border-pearl-accent placeholder-pearl-text-secondary text-pearl-text-primary min-h-[48px] max-h-32 overflow-y-auto"
         />
       </div>
       <Button
         type="submit"
         variant="primary"
         disabled={!message.trim() || isDisabled}
-        className="px-6 py-3 whitespace-nowrap shrink-0"
+        className="px-8 py-4 whitespace-nowrap shrink-0"
       >
         Send
       </Button>

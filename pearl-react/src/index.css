@@ -20,11 +20,19 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: #2c2a28;
+    font-weight: 600; /* semibold instead of bold */
+    color: rgb(64, 83, 100); /* pearl-text-primary */
+    line-height: 1.3; /* improved leading */
+    letter-spacing: -0.01em; /* slight tracking */
   }
 
   p {
-    color: #5a5a58;
+    color: rgb(100, 123, 138); /* pearl-text-secondary */
+    line-height: 1.6; /* better readability */
+  }
+
+  body {
+    background-color: #fefdfb; /* pearl-bg */
   }
 
   .bg-gradient-radial {

@@ -9,15 +9,15 @@ const ChatBubble = ({ message, className = '' }) => {
 
   return (
     <div
-      className={`flex mb-4 ${
+      className={`flex mb-6 ${
         isAssistant ? 'justify-start' : 'justify-end'
       } ${className}`}
     >
       <div
-        className={`max-w-[85%] rounded-2xl px-6 py-4 ${
+        className={`max-w-[85%] rounded-3xl px-6 py-4 ${
           isAssistant
-            ? 'bg-pearl-base-200 text-pearl-text-primary border border-pearl-border-soft'
-            : 'bg-accent-blue text-white ml-auto'
+            ? 'bg-pearl-surface/80 backdrop-blur-sm text-pearl-text-primary border border-pearl-border-soft shadow-pearl-shadow'
+            : 'bg-gradient-to-r from-pearl-accent to-pearl-accent-soft text-white ml-auto shadow-pearl-shadow'
         }`}
       >
         <MarkdownRenderer

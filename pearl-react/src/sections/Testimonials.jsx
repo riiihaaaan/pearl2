@@ -6,22 +6,22 @@ import { TESTIMONIALS } from '../constants';
  */
 const Testimonials = ({ className = '' }) => {
   return (
-    <section className={`py-16 bg-pearl-base-100 ${className}`}>
+    <section className={`py-24 bg-pearl-bg ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-pearl-text-primary mb-4">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl font-bold text-pearl-text-primary mb-6">
             What People Say
           </h2>
-          <p className="text-xl text-pearl-text-secondary max-w-3xl mx-auto">
+          <p className="text-xl text-pearl-text-secondary max-w-3xl mx-auto mb-8">
             Early experiences with PEARL from our community
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-10">
           {TESTIMONIALS.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white p-8 rounded-2xl shadow-sm border border-pearl-border-soft"
+              className="bg-pearl-surface/75 backdrop-blur-sm p-8 rounded-3xl shadow-pearl-shadow border border-pearl-border-soft hover:shadow-pearl-shadow transition-shadow cursor-default"
             >
               <blockquote className="text-lg text-pearl-text-secondary mb-6 leading-relaxed">
                 "{testimonial.quote}"

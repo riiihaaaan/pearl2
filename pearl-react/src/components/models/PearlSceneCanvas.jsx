@@ -7,32 +7,22 @@ import React from 'react';
 const PearlSceneCanvas = ({ className = '' }) => {
   return (
     <div className={`w-full h-96 flex items-center justify-center relative ${className}`}>
-      {/* Background gradient orb */}
-      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-accent-blue via-accent-gradientMid to-accent-blueSoft opacity-20 blur-sm"></div>
+      {/* Diffuse shadow */}
+      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-pearl-accent/10 to-transparent blur-2xl transform scale-150"></div>
 
-      {/* Main orb */}
-      <div className="relative w-48 h-48 rounded-full bg-gradient-to-br from-accent-blue to-accent-blueSoft shadow-2xl">
-        {/* Pearl texture overlay */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/30 via-transparent to-accent-highlight/20"></div>
+      {/* Main orb container */}
+      <div className="relative w-52 h-52 rounded-full">
+        {/* Outer white ring */}
+        <div className="absolute inset-0 rounded-full bg-white/60 shadow-pearl-shadow"></div>
 
-        {/* Shining highlight */}
-        <div className="absolute top-8 left-12 w-16 h-16 rounded-full bg-white/40 blur-sm animate-pulse"></div>
-        <div className="absolute bottom-12 right-8 w-8 h-8 rounded-full bg-accent-highlight/60 blur-sm animate-bounce"></div>
+        {/* Inner pearl gradient */}
+        <div className="absolute inset-2 rounded-full bg-gradient-radial from-pearl-accent-soft via-pearl-accent to-pearl-accent-soft shadow-inner">
+          <div className="w-full h-full rounded-full bg-gradient-to-br from-white/50 via-transparent to-pearl-accent/20"></div>
+        </div>
 
-        {/* Inner radiance */}
-        <div className="absolute inset-4 rounded-full bg-gradient-radial from-accent-highlight/20 to-transparent animate-pulse"></div>
+        {/* Subtle highlights */}
+        <div className="absolute top-6 left-8 w-12 h-12 rounded-full bg-white/30 blur-sm"></div>
       </div>
-
-      {/* Gentle floating animation */}
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-10px) rotate(5deg); }
-        }
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-      `}</style>
     </div>
   );
 };

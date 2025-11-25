@@ -63,7 +63,7 @@ const Hero = ({ className = '', id = 'hero' }) => {
             </div>
 
             {/* Trust indicators */}
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+            <div className="bg-pearl-surface/75 backdrop-blur-sm rounded-3xl p-6 border border-pearl-border-soft shadow-pearl-shadow">
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-accent-blue">0%</div>
@@ -123,14 +123,14 @@ const Hero = ({ className = '', id = 'hero' }) => {
           </div>
 
           {/* Mobile trust indicators */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 max-w-md mx-auto">
+          <div className="bg-pearl-surface/75 backdrop-blur-sm rounded-3xl p-6 border border-pearl-border-soft shadow-pearl-shadow max-w-md mx-auto">
             <div className="grid grid-cols-2 gap-6 text-center">
               <div>
-                <div className="text-2xl font-bold text-accent-blue">0%</div>
+                <div className="text-2xl font-bold text-pearl-accent">0%</div>
                 <p className="text-sm text-pearl-text-secondary">Cloud Usage</p>
               </div>
               <div>
-                <div className="text-2xl font-bold text-accent-blue">24/7</div>
+                <div className="text-2xl font-bold text-pearl-accent">24/7</div>
                 <p className="text-sm text-pearl-text-secondary">Availability</p>
               </div>
             </div>
