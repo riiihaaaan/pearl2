@@ -11,17 +11,25 @@ const PearlSceneCanvas = ({ className = '' }) => {
 
   useEffect(() => {
     if (orbRef.current) {
-      // Gentle floating animation - 7s cycle with 10px amplitude
-      // Represents the calm, breathing quality of the wellness theme
+      // Calm vertical floating animation - 6s cycle with subtle amplitude
+      // Creates living, breathing presence inspired by pearl reference
       gsap.to(orbRef.current, {
-        y: 10,
-        duration: 3.5,
+        y: 12,
+        duration: 6,
         ease: "power1.inOut",
         repeat: -1,
         yoyo: true,
         onStart: () => {
-          gsap.set(orbRef.current, { y: -10 });
+          gsap.set(orbRef.current, { y: -12 });
         }
+      });
+
+      // Very subtle rotation for iridescent pearl effect
+      gsap.to(orbRef.current, {
+        rotation: 360,
+        duration: 20, // Slow rotation over 20 seconds
+        ease: "none",
+        repeat: -1,
       });
     }
 

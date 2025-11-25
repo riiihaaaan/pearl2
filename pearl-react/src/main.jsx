@@ -10,7 +10,7 @@ if ('scrollRestoration' in history) {
 window.scrollTo(0, 0);
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
     <App />
-  </StrictMode>,
+  // </StrictMode>,
 )

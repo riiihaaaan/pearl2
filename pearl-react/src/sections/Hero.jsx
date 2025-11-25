@@ -2,13 +2,16 @@ import React from 'react';
 import NavBar from '../components/NavBar';
 import Button from '../components/Button';
 import PearlSceneCanvas from '../components/models/PearlSceneCanvas';
-import { useHeroTextAnimation } from '../hooks/useScrollAnimation';
+import { usePearlAnimations } from '../hooks/usePearlAnimations';
 
 /**
  * Hero section with navigation and 3D pearl
  */
 const Hero = ({ className = '', id = 'hero' }) => {
-  const heroTextRef = useHeroTextAnimation();
+  const { useHeroElements, useButtonHover } = usePearlAnimations();
+  const { textRef, buttonsRef } = useHeroElements();
+  const heroButtonRef1 = useButtonHover();
+  const heroButtonRef2 = useButtonHover();
 
   const scrollToChat = () => {
     const element = document.querySelector('#chat');
@@ -34,7 +37,7 @@ const Hero = ({ className = '', id = 'hero' }) => {
         {/* Desktop Layout (two-column) */}
         <div className="hidden lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center lg:min-h-[calc(100vh-4rem)]">
           {/* Left: Hero Content */}
-          <div ref={heroTextRef} className="space-y-8">
+          <div ref={textRef} className="space-y-8">
             <div className="space-y-6">
               <h1 className="text-5xl lg:text-6xl font-bold text-pearl-primary leading-tight">
                 Meet PEARL — Your Gentle,
@@ -46,8 +49,9 @@ const Hero = ({ className = '', id = 'hero' }) => {
                 Everything runs locally on your device with Llama 3 — zero cloud data ever leaves your computer.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div ref={buttonsRef} className="flex flex-col sm:flex-row gap-4">
                 <Button
+                  ref={heroButtonRef1}
                   size="lg"
                   onClick={scrollToChat}
                   className="text-lg px-8 py-4"
@@ -55,6 +59,7 @@ const Hero = ({ className = '', id = 'hero' }) => {
                   Start a Conversation
                 </Button>
                 <Button
+                  ref={heroButtonRef2}
                   variant="secondary"
                   size="lg"
                   onClick={() => document.querySelector('#features').scrollIntoView({ behavior: 'smooth' })}

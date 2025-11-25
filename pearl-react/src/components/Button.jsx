@@ -3,13 +3,13 @@ import React from 'react';
 /**
  * Reusable Button component with pearl theming
  */
-const Button = ({
+const Button = React.forwardRef(({
   children,
   variant = 'primary',
   size = 'md',
   className = '',
   ...props
-}) => {
+}, ref) => {
   const baseStyles = 'font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
 
   const variants = {
@@ -26,12 +26,15 @@ const Button = ({
 
   return (
     <button
+      ref={ref}
       className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
       {...props}
     >
       {children}
     </button>
   );
-};
+});
+
+Button.displayName = 'Button';
 
 export default Button;
