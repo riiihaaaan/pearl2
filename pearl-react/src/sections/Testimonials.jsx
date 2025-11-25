@@ -1,10 +1,13 @@
 import React from 'react';
 import { TESTIMONIALS } from '../constants';
+import { useStaggeredAnimation, useScrollAnimation } from '../hooks/useScrollAnimation';
 
 /**
  * Testimonials section
  */
 const Testimonials = ({ className = '' }) => {
+  const staggeredRef = useStaggeredAnimation(3, 0.15); // 3 testimonials, 0.15s stagger
+
   return (
     <section className={`py-24 bg-pearl-bg ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,7 +20,7 @@ const Testimonials = ({ className = '' }) => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-10">
+        <div ref={staggeredRef} className="grid md:grid-cols-3 gap-10">
           {TESTIMONIALS.map((testimonial, index) => (
             <div
               key={index}

@@ -1,11 +1,14 @@
 import React from 'react';
 import { FEATURES } from '../constants';
 import AnimatedCounter from '../components/AnimatedCounter';
+import { useStaggeredAnimation } from '../hooks/useScrollAnimation';
 
 /**
  * Features section showcasing what PEARL can do
  */
 const Features = ({ className = '', id = 'features' }) => {
+  const staggeredRef = useStaggeredAnimation(4, 0.1); // Animate 4 feature cards with 0.1s stagger
+
   return (
     <section
       id={id}
@@ -23,7 +26,7 @@ const Features = ({ className = '', id = 'features' }) => {
         </div>
 
         {/* Feature cards */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-20">
+        <div ref={staggeredRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-20">
           {FEATURES.map((feature, index) => (
             <div
               key={index}

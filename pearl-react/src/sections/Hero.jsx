@@ -2,11 +2,14 @@ import React from 'react';
 import NavBar from '../components/NavBar';
 import Button from '../components/Button';
 import PearlSceneCanvas from '../components/models/PearlSceneCanvas';
+import { useHeroTextAnimation } from '../hooks/useScrollAnimation';
 
 /**
  * Hero section with navigation and 3D pearl
  */
 const Hero = ({ className = '', id = 'hero' }) => {
+  const heroTextRef = useHeroTextAnimation();
+
   const scrollToChat = () => {
     const element = document.querySelector('#chat');
     if (element) {
@@ -31,7 +34,7 @@ const Hero = ({ className = '', id = 'hero' }) => {
         {/* Desktop Layout (two-column) */}
         <div className="hidden lg:grid lg:grid-cols-2 lg:gap-12 lg:items-center lg:min-h-[calc(100vh-4rem)]">
           {/* Left: Hero Content */}
-          <div className="space-y-8">
+          <div ref={heroTextRef} className="space-y-8">
             <div className="space-y-6">
               <h1 className="text-5xl lg:text-6xl font-bold text-pearl-primary leading-tight">
                 PEARL — Your Calm,

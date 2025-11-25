@@ -1,21 +1,49 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
 
 /**
- * 3D Pearl/Orb placeholder component for the hero section
- * Temporarily using 2D animation until Three.js compatibility is resolved
+ * Pearl orb component with gentle floating animation
+ * Simulates breathing movement like a calm pearl in water
  */
 const PearlSceneCanvas = ({ className = '' }) => {
+  const orbRef = useRef(null);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (orbRef.current) {
+      // Gentle floating animation - 7s cycle with 10px amplitude
+      // Represents the calm, breathing quality of the wellness theme
+      gsap.to(orbRef.current, {
+        y: 10,
+        duration: 3.5,
+        ease: "power1.inOut",
+        repeat: -1,
+        yoyo: true,
+        onStart: () => {
+          gsap.set(orbRef.current, { y: -10 });
+        }
+      });
+    }
+
+    return () => {
+      gsap.killTweensOf(orbRef.current);
+    };
+  }, []);
+
   return (
-    <div className={`w-full h-96 flex items-center justify-center relative ${className}`}>
+    <div
+      ref={containerRef}
+      className={`w-full h-96 flex items-center justify-center relative ${className}`}
+    >
       {/* Diffuse shadow */}
       <div className="absolute inset-0 rounded-full bg-gradient-to-br from-pearl-accent/10 to-transparent blur-2xl transform scale-150"></div>
 
-      {/* Main orb container */}
-      <div className="relative w-52 h-52 rounded-full">
+      {/* Main orb container with floating animation */}
+      <div ref={orbRef} className="relative w-52 h-52 rounded-full">
         {/* Outer white ring */}
         <div className="absolute inset-0 rounded-full bg-white/60 shadow-pearl-shadow"></div>
 
-        {/* Inner pearl gradient */}
+        {/* Inner pearl gradient - subtle rotation animation for iridescence */}
         <div className="absolute inset-2 rounded-full bg-gradient-radial from-pearl-accent-soft via-pearl-accent to-pearl-accent-soft shadow-inner">
           <div className="w-full h-full rounded-full bg-gradient-to-br from-white/50 via-transparent to-pearl-accent/20"></div>
         </div>
