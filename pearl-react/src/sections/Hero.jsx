@@ -65,7 +65,7 @@ const Hero = ({ className = '', id = 'hero' }) => {
                   ref={heroButtonRef2}
                   variant="secondary"
                   size="lg"
-                  onClick={() => document.querySelector('#features').scrollIntoView({ behavior: 'smooth' })}
+                  onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
                   className="text-lg px-8 py-4"
                 >
                   See How It Works
@@ -120,7 +120,7 @@ const Hero = ({ className = '', id = 'hero' }) => {
               <Button
                 variant="secondary"
                 size="lg"
-                onClick={() => document.querySelector('#features').scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
                 className="text-lg px-8 py-4 w-full max-w-xs"
               >
                 See How It Works

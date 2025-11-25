@@ -17,6 +17,12 @@ const ChatInput = ({ onSendMessage, isDisabled = false }) => {
       if (textareaRef.current) {
         textareaRef.current.style.height = 'auto';
       }
+      // Restore focus after message is sent
+      setTimeout(() => {
+        if (textareaRef.current) {
+          textareaRef.current.focus();
+        }
+      }, 30);
     }
   };
 

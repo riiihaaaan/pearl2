@@ -36,33 +36,36 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
             <div className="space-y-3">
               <button
                 onClick={() => sendMessage("What does 'hypertension' mean?")}
-                className="w-full pearl-card p-3 text-left text-pearl-muted hover:text-pearl-text"
+                className="w-full pearl-card text-left text-pearl-muted hover:text-pearl-text no-hover"
                 disabled={isLoading}
               >
-                What does "hypertension" mean?
+                <h3 className="text-lg font-semibold text-pearl-text mb-2 max-w-prose">What does "hypertension" mean?</h3>
+                <p className="text-sm text-pearl-muted leading-relaxed">Understand blood pressure terminology</p>
               </button>
               <button
                 onClick={() => sendMessage("How should I prepare for a doctor's visit?")}
-                className="w-full pearl-card p-3 text-left text-pearl-muted hover:text-pearl-text"
+                className="w-full pearl-card text-left text-pearl-muted hover:text-pearl-text no-hover"
                 disabled={isLoading}
               >
-                How should I prepare for a doctor's visit?
+                <h3 className="text-lg font-semibold text-pearl-text mb-2 max-w-prose">How should I prepare for a doctor's visit?</h3>
+                <p className="text-sm text-pearl-muted leading-relaxed">Make the most of your appointment</p>
               </button>
               <button
                 onClick={() => sendMessage("What are common healthy eating guidelines?")}
-                className="w-full pearl-card p-3 text-left text-pearl-muted hover:text-pearl-text"
+                className="w-full pearl-card text-left text-pearl-muted hover:text-pearl-text no-hover"
                 disabled={isLoading}
               >
-                What are common healthy eating guidelines?
+                <h3 className="text-lg font-semibold text-pearl-text mb-2 max-w-prose">What are common healthy eating guidelines?</h3>
+                <p className="text-sm text-pearl-muted leading-relaxed">Nutrition basics for better health</p>
               </button>
             </div>
 
-            <div className="mt-8 p-4 pearl-card shadow-pearl-soft border-accent-iridescent">
+            <div className="mt-8 pearl-card shadow-pearl-soft no-hover">
               <div className="flex items-start space-x-2">
                 <span className="text-accent-iridescent mt-1">⚠️</span>
                 <div>
-                  <p className="text-sm font-medium text-pearl-text mb-1">Safety Reminder</p>
-                  <p className="text-xs text-pearl-muted">PEARL provides information only. Always consult healthcare professionals for medical advice.</p>
+                  <h3 className="text-lg font-semibold text-pearl-text mb-3 max-w-prose">Safety Reminder</h3>
+                  <p className="text-sm text-pearl-muted leading-relaxed">PEARL provides information only. Always consult healthcare professionals for medical advice.</p>
                 </div>
               </div>
             </div>

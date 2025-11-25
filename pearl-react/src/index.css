@@ -44,13 +44,13 @@
   :root {
     --pearl-bg: #FAFBFF;
     --pearl-surface: rgba(255,255,255,0.62);
-    --pearl-border: rgba(200,210,230,0.55);
+    --pearl-border: rgba(200,210,230,0.35);
     --pearl-text: #2B3547;
     --pearl-muted: #6B7280;
     --accent-iridescent: #9AB3FF;
     --accent-iridescent-2: #D6DBFF;
     --line-soft: rgba(140,160,210,0.45);
-    --shadow-pearl: 0 20px 40px rgba(138,160,220,0.10);
+    --shadow-pearl: 0 20px 40px rgba(138,160,220,0.08);
     --orb-glow: rgba(154,179,255,0.2);
 
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -85,12 +85,50 @@
      All cards should use this base + p-8 + shadow-pearl-soft + h-full flex flex-col
      This ensures consistent appearance and content distribution */
   .pearl-card {
-    background: var(--pearl-surface);
+    /* Glassy/off-white pearlescent surface */
+    background: linear-gradient(180deg, rgba(255,255,255,0.76), rgba(246,248,255,0.62));
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border: 1px solid var(--pearl-border);
     border-radius: 24px;
     box-shadow: var(--shadow-pearl);
+    /* Default padding matches p-6 on small screens; md+ will use p-8
+       Components that already include p-6/p-8 will override these values. */
+    padding: 1.5rem; /* 24px == p-6 */
+  }
+
+  @media (min-width: 768px) {
+    .pearl-card {
+      padding: 2rem; /* 32px == p-8 */
+    }
+  }
+
+  /* Hover/interactive micro-interaction: subtle lift + stronger shadow */
+  .pearl-card:hover {
+    transform: translateY(-3px);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    box-shadow: 0 28px 48px rgba(138,160,220,0.10);
+  }
+
+  /* Avoid lift for non-interactive cards: add .no-hover to disable */
+  .pearl-card.no-hover:hover {
+    transform: none;
+    box-shadow: var(--shadow-pearl);
+  }
+
+  /* Focus ring for keyboard users (soft 3px ring with accent) */
+  .pearl-card:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(154,179,255,0.24), var(--shadow-pearl);
+  }
+
+  /* Ensure inner textual content doesn't grow too wide */
+  .pearl-card h3,
+  .pearl-card p,
+  .pearl-card .card-content {
+    max-width: 65ch;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .btn-pearl {

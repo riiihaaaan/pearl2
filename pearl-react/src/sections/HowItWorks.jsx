@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { STEPS } from '../constants';
 import { usePearlAnimations } from '../hooks/usePearlAnimations';
+import PearlCard from '../components/PearlCard';
 
 /**
  * How It Works section
@@ -85,17 +86,17 @@ const ConnectingLine = ({ visible }) => {
 };
 
 const StepCard = ({ step }) => (
-  <div className="step-card pearl-card p-6 md:p-8 shadow-pearl-soft cursor-default flex flex-col items-center text-center min-h-80 w-full md:w-72">
+  <PearlCard className="step-card shadow-pearl-soft cursor-default flex flex-col items-center text-center min-h-80 w-full md:w-72">
     <div className="w-16 h-16 bg-linear-to-br from-accent-iridescent to-accent-iridescent-2 rounded-full flex items-center justify-center text-white font-bold text-2xl mb-6 shadow-pearl-soft shrink-0">
       {step.number}
     </div>
-    <h3 className="text-xl font-semibold text-pearl-text mb-4 line-clamp-2">
+    <h3 className="text-lg font-semibold text-pearl-text mb-3 max-w-prose line-clamp-2">
       {step.title}
     </h3>
     <p className="text-sm text-pearl-muted leading-relaxed grow">
       {step.description}
     </p>
-  </div>
+  </PearlCard>
 );
 
 export default HowItWorks;

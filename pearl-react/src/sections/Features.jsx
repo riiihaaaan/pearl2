@@ -2,6 +2,7 @@ import React from 'react';
 import { FEATURES } from '../constants';
 import AnimatedCounter from '../components/AnimatedCounter';
 import { usePearlAnimations } from '../hooks/usePearlAnimations';
+import PearlCard from '../components/PearlCard';
 
 /**
  * Features section showcasing what PEARL can do
@@ -62,9 +63,9 @@ const FeatureCard = ({ useCardHover, feature }) => {
   const cardRef = useCardHover();
 
   return (
-    <div
+    <PearlCard
       ref={cardRef}
-      className="pearl-card p-6 md:p-8 shadow-pearl-soft cursor-default h-full flex flex-col"
+      className="shadow-pearl-soft cursor-default h-full flex flex-col"
     >
       <div className="text-4xl mb-4 shrink-0">{feature.icon}</div>
       <h3 className="text-lg font-semibold text-pearl-text mb-3 max-w-prose">
@@ -73,7 +74,7 @@ const FeatureCard = ({ useCardHover, feature }) => {
       <p className="text-sm text-pearl-muted leading-relaxed grow max-w-prose">
         {feature.description}
       </p>
-    </div>
+    </PearlCard>
   );
 };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { TESTIMONIALS } from '../constants';
 import { useStaggeredAnimation} from '../hooks/useScrollAnimation';
+import PearlCard from '../components/PearlCard';
 
 /**
  * Testimonials section
@@ -22,9 +23,9 @@ const Testimonials = ({ className = '' }) => {
 
         <div ref={staggeredRef} className="grid md:grid-cols-3 gap-10">
           {TESTIMONIALS.map((testimonial, index) => (
-            <div
+            <PearlCard
               key={index}
-              className="pearl-card p-8 shadow-pearl-soft hover:shadow-pearl-soft transition-shadow cursor-default h-full flex flex-col min-h-64"
+              className="shadow-pearl-soft hover:shadow-pearl-soft transition-shadow cursor-default h-full flex flex-col min-h-64"
             >
               <blockquote className="text-base text-pearl-muted mb-6 leading-relaxed grow">
                 "{testimonial.quote}"
@@ -32,7 +33,7 @@ const Testimonials = ({ className = '' }) => {
               <cite className="text-pearl-text font-semibold text-sm">
                 {testimonial.author}
               </cite>
-            </div>
+            </PearlCard>
           ))}
         </div>
       </div>
