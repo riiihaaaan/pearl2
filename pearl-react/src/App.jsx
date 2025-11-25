@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Hero from './sections/Hero'
 import Features from './sections/Features'
 import HowItWorks from './sections/HowItWorks'
@@ -12,6 +13,22 @@ import Contact from './sections/Contact'
  * A modern, scrollable website for the AI medical assistant
  */
 function App() {
+  useEffect(() => {
+    // Set history scroll restoration to manual
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+
+    // Remove any location.hash on load by replacing state
+    window.history.replaceState(null, '', window.location.pathname + window.location.search);
+
+    // Immediately scrollTo(0, 0) on first mount
+    window.scrollTo(0, 0);
+
+    // Refresh GSAP ScrollTrigger after restoring scroll
+    ScrollTrigger.refresh();
+  }, []);
+
   return (
     <div className="App">
       {/* Hero Section (includes NavBar) */}

@@ -28,7 +28,7 @@ const Features = ({ className = '', id = 'features' }) => {
         </div>
 
         {/* Feature cards */}
-        <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-20">
+        <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-20 items-stretch">
           {FEATURES.map((feature, index) => (
             <FeatureCard
               key={index}
@@ -64,7 +64,7 @@ const FeatureCard = ({ useCardHover, feature }) => {
   return (
     <div
       ref={cardRef}
-      className="pearl-card p-8 shadow-pearl-soft cursor-default h-full flex flex-col min-h-72"
+      className="pearl-card p-6 md:p-8 shadow-pearl-soft cursor-default h-full flex flex-col"
     >
       <div className="text-4xl mb-4 shrink-0">{feature.icon}</div>
       <h3 className="text-lg font-semibold text-pearl-text mb-3">

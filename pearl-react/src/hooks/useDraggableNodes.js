@@ -45,6 +45,11 @@ const useDraggableNodes = (nodesData) => {
     }, {});
   });
 
+  // Initialize current positions ref
+  useEffect(() => {
+    currentPositionsRef.current = positions;
+  }, [positions]);
+
   // Drag state
   const [isDragging, setIsDragging] = useState(false);
   const [activeDragId, setActiveDragId] = useState(null);
@@ -62,21 +67,15 @@ const useDraggableNodes = (nodesData) => {
   const animationFrameRef = useRef(null);
   const persistenceTimeoutRef = useRef(null);
 
-  // Persist positions to localStorage (debounced)
-  const persistPositions = useCallback((newPositions) => {
-    // Clear any pending timeout
-    if (persistenceTimeoutRef.current) {
-      clearTimeout(persistenceTimeoutRef.current);
-    }
+  const currentPositionsRef = useRef(positions);
 
-    // Debounce: write at most once per 250ms while dragging
-    persistenceTimeoutRef.current = setTimeout(() => {
-      try {
-        localStorage.setItem('pearl-node-positions', JSON.stringify(newPositions));
-      } catch (e) {
-        console.warn('Failed to save node positions to localStorage:', e);
-      }
-    }, 250);
+  // Persist positions to localStorage
+  const persistPositions = useCallback((newPositions) => {
+    try {
+      localStorage.setItem('pearl-node-positions', JSON.stringify(newPositions));
+    } catch (e) {
+      console.warn('Failed to save node positions to localStorage:', e);
+    }
   }, []);
 
   // Reset positions to defaults
@@ -149,10 +148,12 @@ const useDraggableNodes = (nodesData) => {
           constrainedY = newY * ratio;
         }
 
-        setPositions((prev) => ({
-          ...prev,
+        const newPositions = {
+          ...positions,
           [dragRef.current.nodeId]: { x: constrainedX, y: constrainedY },
-        }));
+        };
+        currentPositionsRef.current = newPositions;
+        setPositions(newPositions);
       });
     };
 

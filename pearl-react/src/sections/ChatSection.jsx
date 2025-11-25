@@ -14,6 +14,7 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
     <section
       id={id}
       className={`min-h-screen bg-pearl-bg py-16 ${className}`}
+      style={{ position: 'relative', zIndex: 30 }} style={{ position: 'relative', zIndex: 30 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Desktop Layout (side by side) */}

@@ -355,8 +355,7 @@ const InteractiveGraph = ({ isLoading = false, nodes: customNodes = null }) => {
               position: 'absolute',
               left: `${nodePos.x}px`,
               top: `${nodePos.y}px`,
-              transform: 'translate(-50%, -50%)',
-              zIndex: isActive ? 20 : 5,
+              transform: 'translate3d(-50%, -50%, 0)',
               cursor: isDragging && isActive ? 'grabbing' : 'grab',
             }}
             onPointerDown={(e) => handlePointerDown(e, node.id)}

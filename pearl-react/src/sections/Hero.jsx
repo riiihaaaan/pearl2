@@ -90,7 +90,7 @@ const Hero = ({ className = '', id = 'hero' }) => {
 
           {/* Right: Interactive Graph */}
           <div className="order-first lg:order-last">
-            <div className="relative h-[400px] lg:h-[500px]">
+            <div className="relative overflow-visible h-[400px] lg:h-[500px]">
               <InteractiveGraph isLoading={isLoading} />
             </div>
           </div>

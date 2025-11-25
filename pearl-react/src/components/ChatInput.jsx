@@ -23,6 +23,7 @@ const ChatInput = ({ onSendMessage, isDisabled = false }) => {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
+      e.stopPropagation();
       handleSubmit(e);
     }
   };
@@ -46,7 +47,7 @@ const ChatInput = ({ onSendMessage, isDisabled = false }) => {
   // }, [isDisabled]);
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-3 p-6 bg-pearl-bg border-t border-pearl-border-soft">
+    <div className="flex gap-3 p-6 bg-pearl-bg border-t border-pearl-border-soft">
       <div className="flex-1 relative">
         <textarea
           ref={textareaRef}
@@ -60,14 +61,14 @@ const ChatInput = ({ onSendMessage, isDisabled = false }) => {
         />
       </div>
       <Button
-        type="submit"
+        onClick={handleSubmit}
         variant="primary"
         disabled={!message.trim() || isDisabled}
         className="px-8 py-4 whitespace-nowrap shrink-0"
       >
         Send
       </Button>
-    </form>
+    </div>
   );
 };
 
