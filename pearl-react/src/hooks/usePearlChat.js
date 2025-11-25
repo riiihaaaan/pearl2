@@ -9,7 +9,7 @@ export const usePearlChat = () => {
   const [messages, setMessages] = useState([{
     id: '1',
     role: 'assistant',
-    content: "Hello! I'm PEARL, your personal AI medical companion. I can help explain medical terms, provide general health information, and suggest questions to ask your healthcare provider. How can I assist you today?\n\n*Remember: I am not a substitute for professional medical advice. Please consult licensed healthcare professionals for any medical concerns.*"
+    content: "Hello! I'm PEARL, your calm AI medical companion. I'm here to help explain general health topics, decode medical jargon in simple terms, and suggest questions to prepare for your doctor's appointments. I'll never diagnose conditions or prescribe treatments—just provide caring, clear information to help you feel more confident about your health.\n\n*Please remember: I'm not a substitute for professional medical advice. For any health concerns, always consult licensed healthcare professionals.*"
   }]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -53,7 +53,7 @@ export const usePearlChat = () => {
       const errorMessage = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: "I apologize, but I'm currently unable to connect to my local AI assistant. Please make sure Ollama is running locally with the Llama 3 model. For now, try refreshing the page or check the console for more details.\n\n*Remember: This is not medical advice. Please consult a healthcare professional for any health concerns.*"
+        content: "I'm sorry, but I'm temporarily unable to connect to my local AI helper. Please ensure Ollama is running with the Llama 3 model on your device. Try refreshing this page or checking your local setup. This doesn't prevent you from using other health resources.\n\n*For any health concerns, please reach out to local healthcare providers or emergency services directly.*"
       };
 
       setMessages(prev => [...prev, errorMessage]);
@@ -69,7 +69,7 @@ export const usePearlChat = () => {
     setMessages([{
       id: '1',
       role: 'assistant',
-      content: "Hello! I've reset our conversation. How can I assist you with general health information today?\n\n*Remember: I am not a substitute for professional medical advice.*"
+      content: "I've cleared our conversation. How can I help you understand general health information today?\n\n*Remember: I'm not a substitute for professional medical advice. Please connect licensed healthcare professionals for any health concerns.*"
     }]);
     setError(null);
   }, []);

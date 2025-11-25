@@ -37,13 +37,13 @@ const Hero = ({ className = '', id = 'hero' }) => {
           <div ref={heroTextRef} className="space-y-8">
             <div className="space-y-6">
               <h1 className="text-5xl lg:text-6xl font-bold text-pearl-primary leading-tight">
-                PEARL — Your Calm,
-                <span className="text-accent-blue"> Local</span> AI Medical Companion
+                Meet PEARL — Your Gentle,
+                <span className="text-accent-blue"> Local</span> AI Health Guide
               </h1>
 
               <p className="text-xl text-pearl-secondary leading-relaxed">
-                Get clear health information and medical explanations from an AI that respects your privacy.
-                All processing happens locally on your device with Llama 3.
+                Discover general health information and medical explanations from an AI that stays completely private.
+                Everything runs locally on your device with Llama 3 — zero cloud data ever leaves your computer.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
@@ -52,7 +52,7 @@ const Hero = ({ className = '', id = 'hero' }) => {
                   onClick={scrollToChat}
                   className="text-lg px-8 py-4"
                 >
-                  Start Consultation
+                  Start a Conversation
                 </Button>
                 <Button
                   variant="secondary"
@@ -60,7 +60,7 @@ const Hero = ({ className = '', id = 'hero' }) => {
                   onClick={() => document.querySelector('#features').scrollIntoView({ behavior: 'smooth' })}
                   className="text-lg px-8 py-4"
                 >
-                  Learn More
+                  See How It Works
                 </Button>
               </div>
             </div>
@@ -92,13 +92,13 @@ const Hero = ({ className = '', id = 'hero' }) => {
         <div className="lg:hidden space-y-12 pt-8">
           <div className="space-y-8">
             <h1 className="text-4xl font-bold text-pearl-primary leading-tight text-center">
-              PEARL — Your Calm,
-              <span className="text-accent-blue"> Local</span> AI Medical Companion
+              Meet PEARL — Your Gentle,
+              <span className="text-accent-blue"> Local</span> AI Health Guide
             </h1>
 
             <p className="text-lg text-pearl-secondary leading-relaxed text-center max-w-2xl mx-auto">
-              Get clear health information and medical explanations from an AI that respects your privacy.
-              All processing happens locally on your device with Llama 3.
+              Discover general health information and medical explanations from an AI that stays completely private.
+              Everything runs locally on your device with Llama 3 — zero cloud data ever leaves your computer.
             </p>
 
             <div className="flex flex-col gap-4 items-center">
@@ -107,7 +107,7 @@ const Hero = ({ className = '', id = 'hero' }) => {
                 onClick={scrollToChat}
                 className="text-lg px-8 py-4 w-full max-w-xs"
               >
-                Start Consultation
+                Start a Conversation
               </Button>
               <Button
                 variant="secondary"
@@ -115,7 +115,7 @@ const Hero = ({ className = '', id = 'hero' }) => {
                 onClick={() => document.querySelector('#features').scrollIntoView({ behavior: 'smooth' })}
                 className="text-lg px-8 py-4 w-full max-w-xs"
               >
-                Learn More
+                See How It Works
               </Button>
             </div>
           </div>

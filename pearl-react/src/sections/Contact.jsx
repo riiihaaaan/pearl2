@@ -13,10 +13,10 @@ const Contact = ({ className = '', id = 'contact' }) => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <h2 className="text-4xl font-bold text-pearl-text-primary mb-6">
-            Contact & Feedback
+            Questions & Feedback
           </h2>
           <p className="text-xl text-pearl-text-secondary mb-8">
-            Have questions or suggestions? We'd love to hear from you.
+            Have general questions about PEARL or suggestions for improvement? We're here to listen.
           </p>
         </div>
 

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import Button from './Button';
 
 /**
@@ -37,12 +37,13 @@ const ChatInput = ({ onSendMessage, isDisabled = false }) => {
     }
   };
 
-  // Focus on mount
-  useEffect(() => {
-    if (textareaRef.current && !isDisabled) {
-      textareaRef.current.focus();
-    }
-  }, [isDisabled]);
+  // Optional: Re-enable focus if user has interacted, but not on initial mount
+  // For now, removed to prevent auto-jumping to chat
+  // useEffect(() => {
+  //   if (textareaRef.current && !isDisabled) {
+  //     textareaRef.current.focus();
+  //   }
+  // }, [isDisabled]);
 
   return (
     <form onSubmit={handleSubmit} className="flex gap-3 p-6 bg-pearl-bg border-t border-pearl-border-soft">
@@ -52,7 +53,7 @@ const ChatInput = ({ onSendMessage, isDisabled = false }) => {
           value={message}
           onChange={handleTextareaChange}
           onKeyDown={handleKeyDown}
-          placeholder="Ask PEARL about health questions, medical terms, or prepare for your doctor's visit..."
+          placeholder="Describe a health concern, medical term, or appointment worry in your own words..."
           disabled={isDisabled}
           rows={1}
           className="w-full px-5 py-4 bg-pearl-surface/75 backdrop-blur-sm border border-pearl-border-soft rounded-3xl resize-none focus:outline-none focus:ring-2 focus:ring-pearl-accent focus:border-pearl-accent placeholder-pearl-text-secondary text-pearl-text-primary min-h-[48px] max-h-32 overflow-y-auto"
