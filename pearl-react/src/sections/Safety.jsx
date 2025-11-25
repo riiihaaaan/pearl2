@@ -1,0 +1,68 @@
+import React from 'react';
+
+/**
+ * Safety and disclaimers section
+ */
+const Safety = ({ className = '', id = 'safety' }) => {
+  return (
+    <section
+      id={id}
+      className={`py-16 bg-white ${className}`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-pearl-text-primary mb-4">
+            Safety & Trust
+          </h2>
+          <p className="text-xl text-pearl-text-secondary max-w-3xl mx-auto mb-12">
+            Your health and privacy are our top priorities. Here's what PEARL is and isn't.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12">
+          {/* What PEARL is */}
+          <div className="space-y-6">
+            <div className="flex items-start space-x-4">
+              <div className="w-8 h-8 bg-ui-success/20 rounded-full flex items-center justify-center text-ui-success font-bold">✓</div>
+              <div>
+                <h3 className="text-xl font-semibold text-pearl-text-primary mb-2">What PEARL IS</h3>
+                <p className="text-pearl-text-secondary">An empathetic AI companion that explains medical terms, suggests preparation questions, and provides general health information. All processing stays completely local on your device.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* What PEARL isn't */}
+          <div className="space-y-6">
+            <div className="flex items-start space-x-4">
+              <div className="w-8 h-8 bg-ui-warning/20 rounded-full flex items-center justify-center text-ui-warning font-bold">○</div>
+              <div>
+                <h3 className="text-xl font-semibold text-pearl-text-primary mb-2">What PEARL IS NOT</h3>
+                <p className="text-pearl-text-secondary">A medical device, diagnostic tool, or substitute for professional healthcare. PEARL never prescribes, diagnoses, or gives definitive medical conclusions.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-16 bg-pearl-base-100 rounded-2xl p-8 border border-pearl-border-soft">
+          <div className="text-center">
+            <h3 className="text-2xl font-semibold text-pearl-text-primary mb-4">
+              Important Disclaimers
+            </h3>
+            <div className="grid md:grid-cols-2 gap-6 text-left">
+              <div>
+                <h4 className="font-semibold text-pearl-text-primary mb-2">Emergency Situations</h4>
+                <p className="text-pearl-text-secondary">For urgent health concerns, call emergency services immediately. Do not wait for AI responses in critical situations.</p>
+              </div>
+              <div>
+                <h4 className="font-semibold text-pearl-text-primary mb-2">Medical Professional Required</h4>
+                <p className="text-pearl-text-secondary">Always consult licensed healthcare professionals for diagnosis, treatment, and medical advice. PEARL is for informational purposes only.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Safety;
