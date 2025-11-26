@@ -32,7 +32,7 @@ export const usePearlChat = () => {
    * @param {string} userText - The user's message text
    */
   const sendMessage = useCallback(async (userText) => {
-    if (!userText.trim() || isLoading) return;
+    if (!userText.trim() || isLoading) return false;
 
     // Clear any previous error
     setError(null);
@@ -60,6 +60,7 @@ export const usePearlChat = () => {
       setMessages(prev => [...prev, assistantMessage]);
       // Mark that user has sent their first successful query
       updateHasUserQueried(true);
+      return true;
     } catch (err) {
       console.error('Failed to get AI response:', err);
       setError(err.message);
@@ -72,6 +73,7 @@ export const usePearlChat = () => {
       };
 
       setMessages(prev => [...prev, errorMessage]);
+      return false;
     } finally {
       setIsLoading(false);
     }

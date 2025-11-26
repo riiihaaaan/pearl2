@@ -21,7 +21,7 @@ const NavBar = ({ className = '' }) => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-gradient bg-gradient-to-r from-accent-blue to-accent-light bg-clip-text text-transparent">
+            <h1 className="text-2xl font-bold text-gradient bg-gradient-to-r from-accent-blue-500 to-accent-blue-400 bg-clip-text text-transparent">
               PEARL
             </h1>
           </div>

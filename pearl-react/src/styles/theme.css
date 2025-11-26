@@ -1,0 +1,20 @@
+:root {
+  --pearl-100: #f6f8ff;
+  --pearl-200: #eef2ff;
+  --accent-blue-500: #6176b8;
+  --accent-blue-400: #7f9be0;
+  --muted-600: #6b7280;
+  --pearl-glow: 0 20px 40px rgba(118,127,206,0.08);
+  --button-gradient: linear-gradient(135deg, var(--accent-blue-400) 0%, var(--accent-blue-500) 100%);
+}
+
+/* Button and pill gradient utility */
+.pearl-button {
+  background: var(--button-gradient);
+  box-shadow: var(--pearl-glow);
+}
+
+/* Pearl glow utility for subtle background radial gradient */
+.pearl-glow {
+  background-image: radial-gradient(circle at center, rgba(118,127,206,0.08) 0%, transparent 70%);
+}

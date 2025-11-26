@@ -272,7 +272,7 @@ const InteractiveGraph = ({ isLoading = false, nodes: customNodes = null }) => {
   return (
     <div
       ref={containerRef}
-      className="interactive-graph-container"
+      className="interactive-graph-container pearl-glow"
       style={{
         position: 'relative',
         width: '100%',

@@ -1,6 +1,8 @@
+@import "./styles/theme.css";
+
 @import "tailwindcss";
 
-/* 
+/*
   PEARL Design System & Styling Standards
   ========================================
   
@@ -279,7 +281,7 @@
   }
 
   .btn-pearl {
-    background: linear-gradient(135deg, var(--accent-iridescent), var(--accent-iridescent-2));
+    background: var(--button-gradient);
     color: white;
     border-radius: 24px;
     padding: 14px 28px;
@@ -293,6 +295,7 @@
     justify-content: center;
     white-space: normal;
     line-height: 1.4;
+    box-shadow: var(--pearl-glow);
   }
 
   .btn-pearl:hover {
@@ -415,7 +418,7 @@
 
   /* Send button inside pill */
   .chat-input-pill button {
-    background: linear-gradient(135deg, #9AB3FF, #D6DBFF);
+    background: var(--button-gradient);
     color: white;
     border: none;
     border-radius: 50%;
@@ -427,6 +430,7 @@
     cursor: pointer;
     transition: all 0.2s ease;
     flex-shrink: 0;
+    box-shadow: var(--pearl-glow);
   }
 
   .chat-input-pill button:hover:not(:disabled) {
@@ -437,6 +441,19 @@
   .chat-input-pill button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
 
   /* Plus icon for attachments (optional) */
@@ -452,6 +469,22 @@
   }
 
   .chat-input-pill .attachment-btn:hover {
+    background: rgba(156,163,175,0.2);
+  }
+
+  /* Microphone icon placeholder */
+  .chat-input-pill .mic-btn {
+    background: rgba(156,163,175,0.1);
+    color: #6B7280;
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .chat-input-pill .mic-btn:hover {
     background: rgba(156,163,175,0.2);
   }
 
@@ -535,5 +568,78 @@
   /* Last item (Safety Reminder) has small bottom margin */
   .chat-sidebar .sidebar-card:last-child {
     margin-bottom: 8px;
+  }
+
+  /* Typing indicator three dots animation */
+  .typing-dots {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    min-height: 12px; /* Prevent layout jump */
+  }
+
+  .typing-dots .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--muted-600);
+    animation: typing-pulse 1.4s infinite ease-in-out;
+  }
+
+  .typing-dots .dot:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  .typing-dots .dot:nth-child(2) {
+    animation-delay: 0.16s;
+  }
+
+  .typing-dots .dot:nth-child(3) {
+    animation-delay: 0.32s;
+  }
+
+  @keyframes typing-pulse {
+    0%, 60%, 100% {
+      transform: scale(1);
+      opacity: 0.4;
+    }
+    30% {
+      transform: scale(1.2);
+      opacity: 0.8;
+    }
+  }
+
+  /* Message enter animations */
+  .message-enter-user {
+    animation: bubble-enter-user 240ms ease-out forwards;
+  }
+
+  @keyframes bubble-enter-user {
+    from {
+      transform: translateX(30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .message-enter-ai {
+    animation: bubble-enter-ai 320ms ease-out forwards;
+    animation-delay: 120ms;
+    animation-fill-mode: both;
+  }
+
+  @keyframes bubble-enter-ai {
+    from {
+      transform: translateX(-30px) scale(0.98);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0) scale(1);
+      opacity: 1;
+    }
   }
 }
