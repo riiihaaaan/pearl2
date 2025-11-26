@@ -29,7 +29,7 @@ const Features = ({ className = '', id = 'features' }) => {
         </div>
 
         {/* Feature cards */}
-        <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-20 items-stretch justify-items-center">
+        <div ref={gridRef} className="max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-20 items-stretch">
           {FEATURE_CARDS.map((feature, index) => (
             <FeatureCard
               key={feature.id || index}
