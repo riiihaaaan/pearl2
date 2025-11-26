@@ -73,33 +73,36 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
 
           {/* Sidebar with independent scrolling - only show if user hasn't queried yet */}
           {!hasUserQueried && (
-            <aside ref={sidebarRef} id="common-questions" className="chat-sidebar pearl-card shadow-pearl-soft" role="complementary" aria-label="Common Questions">
+            <PearlCard as="aside" ref={sidebarRef} id="common-questions" className="chat-sidebar shadow-pearl-soft" role="complementary" aria-label="Common Questions">
               <h3 className="text-lg font-semibold text-pearl-text">Common Questions</h3>
               <div>
-                <button
+                <PearlCard
                   onClick={() => handleSendMessage("What does 'hypertension' mean?")}
-                  className="w-full sidebar-card pearl-card text-left text-pearl-muted hover:text-pearl-text no-hover"
-                  disabled={isLoading}
+                  className="w-full sidebar-card text-left text-pearl-muted hover:text-pearl-text no-hover"
+                  role="button"
+                  tabIndex={0}
                 >
                   <h3 className="text-lg font-semibold text-pearl-text mb-2 max-w-prose">What does "hypertension" mean?</h3>
                   <p className="text-sm text-pearl-muted leading-relaxed">Understand blood pressure terminology</p>
-                </button>
-                <button
+                </PearlCard>
+                <PearlCard
                   onClick={() => handleSendMessage("How should I prepare for a doctor's visit?")}
-                  className="w-full sidebar-card pearl-card text-left text-pearl-muted hover:text-pearl-text no-hover"
-                  disabled={isLoading}
+                  className="w-full sidebar-card text-left text-pearl-muted hover:text-pearl-text no-hover"
+                  role="button"
+                  tabIndex={0}
                 >
                   <h3 className="text-lg font-semibold text-pearl-text mb-2 max-w-prose">How should I prepare for a doctor's visit?</h3>
                   <p className="text-sm text-pearl-muted leading-relaxed">Make the most of your appointment</p>
-                </button>
-                <button
+                </PearlCard>
+                <PearlCard
                   onClick={() => handleSendMessage("What are common healthy eating guidelines?")}
-                  className="w-full sidebar-card pearl-card text-left text-pearl-muted hover:text-pearl-text no-hover"
-                  disabled={isLoading}
+                  className="w-full sidebar-card text-left text-pearl-muted hover:text-pearl-text no-hover"
+                  role="button"
+                  tabIndex={0}
                 >
                   <h3 className="text-lg font-semibold text-pearl-text mb-2 max-w-prose">What are common healthy eating guidelines?</h3>
                   <p className="text-sm text-pearl-muted leading-relaxed">Nutrition basics for better health</p>
-                </button>
+                </PearlCard>
               </div>
 
               <PearlCard className="sidebar-card shadow-pearl-soft no-hover">
@@ -111,7 +114,7 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
                   </div>
                 </div>
               </PearlCard>
-            </aside>
+            </PearlCard>
           )}
         </div>
 
@@ -135,30 +138,33 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
             <div className="max-w-md mx-auto">
               <h3 className="text-lg font-semibold text-pearl-text text-center mb-4">Common Questions</h3>
               <div className="space-y-3">
-                <button
+                <PearlCard
                   onClick={() => handleSendMessage("What does 'hypertension' mean?")}
-                  className="w-full pearl-card p-4 text-left text-pearl-muted hover:text-pearl-text no-hover"
-                  disabled={isLoading}
+                  className="w-full p-4 text-left text-pearl-muted hover:text-pearl-text no-hover"
+                  role="button"
+                  tabIndex={0}
                 >
                   <div className="font-semibold text-pearl-text">What does "hypertension" mean?</div>
                   <div className="text-sm text-pearl-muted">Understand blood pressure terminology</div>
-                </button>
-                <button
+                </PearlCard>
+                <PearlCard
                   onClick={() => handleSendMessage("How should I prepare for a doctor's visit?")}
-                  className="w-full pearl-card p-4 text-left text-pearl-muted hover:text-pearl-text no-hover"
-                  disabled={isLoading}
+                  className="w-full p-4 text-left text-pearl-muted hover:text-pearl-text no-hover"
+                  role="button"
+                  tabIndex={0}
                 >
                   <div className="font-semibold text-pearl-text">How should I prepare for a doctor's visit?</div>
                   <div className="text-sm text-pearl-muted">Make the most of your appointment</div>
-                </button>
-                <button
+                </PearlCard>
+                <PearlCard
                   onClick={() => handleSendMessage("What are common healthy eating guidelines?")}
-                  className="w-full pearl-card p-4 text-left text-pearl-muted hover:text-pearl-text no-hover"
-                  disabled={isLoading}
+                  className="w-full p-4 text-left text-pearl-muted hover:text-pearl-text no-hover"
+                  role="button"
+                  tabIndex={0}
                 >
                   <div className="font-semibold text-pearl-text">What are common healthy eating guidelines?</div>
                   <div className="text-sm text-pearl-muted">Nutrition basics for better health</div>
-                </button>
+                </PearlCard>
               </div>
 
               <PearlCard className="mt-6 p-4 shadow-pearl-soft no-hover">

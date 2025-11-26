@@ -1,5 +1,5 @@
 import React from 'react';
-import { FEATURES } from '../constants';
+import FEATURE_CARDS from '../constants/cards';
 import AnimatedCounter from '../components/AnimatedCounter';
 import { usePearlAnimations } from '../hooks/usePearlAnimations';
 import PearlCard from '../components/PearlCard';
@@ -29,10 +29,10 @@ const Features = ({ className = '', id = 'features' }) => {
         </div>
 
         {/* Feature cards */}
-        <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-20 items-stretch">
-          {FEATURES.map((feature, index) => (
+        <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-20 items-stretch justify-items-center">
+          {FEATURE_CARDS.map((feature, index) => (
             <FeatureCard
-              key={index}
+              key={feature.id || index}
               useCardHover={useCardHover}
               feature={feature}
             />
@@ -61,20 +61,19 @@ const Features = ({ className = '', id = 'features' }) => {
 
 const FeatureCard = ({ useCardHover, feature }) => {
   const cardRef = useCardHover();
+  const [open, setOpen] = React.useState(false);
 
   return (
     <PearlCard
       ref={cardRef}
-      className="shadow-pearl-soft cursor-default h-full flex flex-col"
-    >
-      <div className="text-4xl mb-4 shrink-0">{feature.icon}</div>
-      <h3 className="text-lg font-semibold text-pearl-text mb-3 max-w-prose">
-        {feature.title}
-      </h3>
-      <p className="text-sm text-pearl-muted leading-relaxed grow max-w-prose">
-        {feature.description}
-      </p>
-    </PearlCard>
+      onClick={() => setOpen((s) => !s)}
+      title={feature.long}
+      iconPath={feature.iconPath}
+      alt={feature.alt}
+      short={feature.short}
+      long={feature.long}
+      className={`shadow-pearl-soft cursor-pointer h-full flex flex-col ${open ? 'expanded' : ''}`}
+    />
   );
 };
 

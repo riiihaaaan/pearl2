@@ -85,21 +85,27 @@
      All cards should use this base + p-8 + shadow-pearl-soft + h-full flex flex-col
      This ensures consistent appearance and content distribution */
   .pearl-card {
-    /* Glassy/off-white pearlescent surface */
-    background: linear-gradient(180deg, rgba(255,255,255,0.76), rgba(246,248,255,0.62));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    /* Use the exact visual tokens requested */
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(200,210,230,0.35);
+    background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(248,250,255,0.95));
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    border: 1px solid var(--pearl-border);
-    border-radius: 24px;
-    box-shadow: var(--shadow-pearl);
-    /* Default padding matches p-6 on small screens; md+ will use p-8
-       Components that already include p-6/p-8 will override these values. */
-    padding: 1.5rem; /* 24px == p-6 */
+    box-shadow: 0 20px 40px rgba(138,160,220,0.06);
+    box-sizing: border-box;
+    text-align: center;
+    overflow: visible;
+    min-width: 0;
   }
 
   @media (min-width: 768px) {
     .pearl-card {
-      padding: 2rem; /* 32px == p-8 */
+      padding: 1.5rem; /* 24px == smaller size */
     }
   }
 
@@ -126,10 +132,17 @@
   .pearl-card h3,
   .pearl-card p,
   .pearl-card .card-content {
-    max-width: 65ch;
+    max-width: 90%;
     margin-left: auto;
     margin-right: auto;
   }
+
+  .pearl-card .icon { width:64px; height:64px; margin-top:4px; }
+  .pearl-card h3 { margin:0; font-weight:600; color:#27303a; font-size:1.05rem; word-wrap: break-word; }
+  .pearl-card p.short { color:#6b7280; margin:0; max-width: none; word-wrap: break-word; }
+  .pearl-card p.long { display:none; }
+  .pearl-card.expanded p.long { display: block; }
+  .pearl-card p { word-break: break-word; overflow-wrap: break-word; }
 
   /* Chat layout grid to ensure deterministic two-column layout */
   .chat-layout-grid {
@@ -203,7 +216,6 @@
      Specific styling for the "How It Works" step cards to ensure visual alignment */
   .how-card {
     width: 100%; /* Mobile full width by default */
-    min-height: 320px; /* Consistent min height on desktop */
     border: 1px solid rgba(200,210,230,0.35);
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(138,160,220,0.08);
@@ -213,55 +225,56 @@
   /* Responsive widths for specific breakpoints */
   @media (min-width: 768px) {
     .how-card {
-      /* Tablet: 180-210px width */
-      width: 200px;
-      min-width: 180px;
-      max-width: 210px;
+      /* Tablet: flexible width within reasonable bounds */
+      width: 100%;
+      min-width: 160px;
+      max-width: none;
     }
   }
 
   @media (min-width: 1024px) {
     .how-card {
-      /* Desktop: 220-260px width */
-      width: 240px;
-      min-width: 220px;
-      max-width: 260px;
-      min-height: 320px;
+      /* Desktop: flexible width, no fixed constraints */
+      width: 100%;
+      min-width: 180px;
+      max-width: none;
     }
   }
 
   /* Constrain title block content */
   .how-card .how-card-title {
     text-align: center;
-    max-width: 200px;
+    max-width: 100%;
     margin: 0 auto;
   }
 
   /* Grid layout for cards */
   .how-grid {
     display: grid;
-    align-items: start; /* Align to top for consistent appearance */
+    align-items: stretch; /* Stretch to same height for even appearance */
   }
 
   /* Mobile: single column, full width cards */
   .how-grid {
     grid-template-columns: 1fr;
     gap: 24px;
+    width: 100%;
+    max-width: 100%;
   }
 
-  /* Tablet: 2 columns */
+  /* Tablet: 2 columns with flex support */
   @media (min-width: 768px) {
     .how-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
     }
   }
 
-  /* Desktop: 4 columns */
+  /* Desktop: 4 columns with flex support */
   @media (min-width: 1024px) {
     .how-grid {
-      grid-template-columns: repeat(4, 1fr);
-      gap: 48px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
     }
   }
 
@@ -269,9 +282,17 @@
     background: linear-gradient(135deg, var(--accent-iridescent), var(--accent-iridescent-2));
     color: white;
     border-radius: 24px;
-    padding: 12px 24px;
+    padding: 14px 28px;
     font-weight: 600;
     transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: normal;
+    line-height: 1.4;
   }
 
   .btn-pearl:hover {

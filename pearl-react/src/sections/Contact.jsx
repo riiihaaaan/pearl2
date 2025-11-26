@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../components/Button';
+import PearlCard from '../components/PearlCard';
 
 /**
  * Contact section
@@ -20,7 +21,7 @@ const Contact = ({ className = '', id = 'contact' }) => {
           </p>
         </div>
 
-        <div className="pearl-card p-8 md:p-10 shadow-pearl-soft">
+        <PearlCard className="p-8 md:p-10 shadow-pearl-soft">
           <form className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
               <div>
@@ -70,7 +71,7 @@ const Contact = ({ className = '', id = 'contact' }) => {
               For urgent matters, please contact local healthcare providers or emergency services.
             </p>
           </div>
-        </div>
+        </PearlCard>
       </div>
     </section>
   );

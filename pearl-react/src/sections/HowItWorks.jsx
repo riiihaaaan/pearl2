@@ -81,7 +81,7 @@ const ConnectingLine = ({ visible }) => {
 };
 
 const StepCard = ({ step }) => (
-  <div className="how-card pearl-card shadow-pearl-soft cursor-default flex flex-col items-center text-center grow">
+  <PearlCard className="how-card shadow-pearl-soft cursor-default grow items-center text-center no-hover">
     <div className="w-14 h-14 bg-linear-to-br from-accent-iridescent to-accent-iridescent-2 rounded-full flex items-center justify-center text-white font-bold text-xl mb-4 shadow-pearl-soft shrink-0">
       {step.number}
     </div>
@@ -93,7 +93,7 @@ const StepCard = ({ step }) => (
     <p className="text-sm text-pearl-muted leading-relaxed grow">
       {step.description}
     </p>
-  </div>
+  </PearlCard>
 );
 
 export default HowItWorks;
