@@ -1,4 +1,5 @@
 import React from 'react';
+import PearlCard from '../components/PearlCard';
 
 /**
  * Safety and disclaimers section
@@ -21,7 +22,7 @@ const Safety = ({ className = '', id = 'safety' }) => {
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* What PEARL is */}
-          <div className="pearl-card shadow-pearl-soft cursor-default h-full flex flex-col">
+          <PearlCard className="shadow-pearl-soft cursor-default h-full flex flex-col">
             <div className="flex items-start space-x-4">
               <div className="w-8 h-8 bg-accent-iridescent/20 rounded-full flex items-center justify-center text-accent-iridescent font-bold shrink-0">✓</div>
               <div>
@@ -29,10 +30,10 @@ const Safety = ({ className = '', id = 'safety' }) => {
                 <p className="text-sm text-pearl-muted leading-relaxed">An empathetic AI companion that explains medical terms, suggests preparation questions, and provides general health information. All processing stays completely local on your device.</p>
               </div>
             </div>
-          </div>
+          </PearlCard>
 
           {/* What PEARL isn't */}
-          <div className="pearl-card shadow-pearl-soft cursor-default h-full flex flex-col">
+          <PearlCard className="shadow-pearl-soft cursor-default h-full flex flex-col">
             <div className="flex items-start space-x-4">
               <div className="w-8 h-8 bg-accent-iridescent/20 rounded-full flex items-center justify-center text-accent-iridescent font-bold shrink-0">○</div>
               <div>
@@ -40,10 +41,10 @@ const Safety = ({ className = '', id = 'safety' }) => {
                 <p className="text-sm text-pearl-muted leading-relaxed">A medical device, diagnostic tool, or substitute for professional healthcare. PEARL never prescribes, diagnoses, or gives definitive medical conclusions.</p>
               </div>
             </div>
-          </div>
+          </PearlCard>
         </div>
 
-        <div className="mt-20 pearl-card shadow-pearl-soft">
+        <PearlCard className="mt-20 shadow-pearl-soft">
           <div className="text-center">
             <h3 className="text-lg font-semibold text-pearl-text mb-6 max-w-prose">
               Important Disclaimers
@@ -59,7 +60,7 @@ const Safety = ({ className = '', id = 'safety' }) => {
               </div>
             </div>
           </div>
-        </div>
+        </PearlCard>
       </div>
     </section>
   );

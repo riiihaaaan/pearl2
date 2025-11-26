@@ -3,6 +3,7 @@ import MessageList from '../components/MessageList';
 import ChatInput from '../components/ChatInput';
 import TypingIndicator from '../components/TypingIndicator';
 import { usePearlChat } from '../hooks/usePearlChat';
+import PearlCard from '../components/PearlCard';
 
 /**
  * Chat section component with AI conversation interface
@@ -42,7 +43,7 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
         {/* Desktop Layout (two-column grid) */}
         <div ref={gridRef} className={`hidden lg:grid chat-layout-grid h-[600px] ${hasUserQueried ? 'expanded' : ''}`}>
           {/* Chat Area */}
-          <section id="chat-area" className="chat-card pearl-card overflow-hidden shadow-pearl-soft" role="region" aria-label="Chat with PEARL">
+          <PearlCard id="chat-area" className="chat-card overflow-hidden shadow-pearl-soft" role="region" aria-label="Chat with PEARL">
             <div className="bg-pearl-surface px-6 py-4 border-b border-pearl-border shrink-0">
               <div className="flex items-center justify-between">
                 <div>
@@ -68,7 +69,7 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
             <div className="chat-footer">
               <ChatInput onSendMessage={(msg) => handleSendMessage(msg)} isDisabled={isLoading} />
             </div>
-          </section>
+          </PearlCard>
 
           {/* Sidebar with independent scrolling - only show if user hasn't queried yet */}
           {!hasUserQueried && (
@@ -101,7 +102,7 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
                 </button>
               </div>
 
-              <div className="sidebar-card pearl-card shadow-pearl-soft no-hover">
+              <PearlCard className="sidebar-card shadow-pearl-soft no-hover">
                 <div className="flex items-start space-x-2">
                   <span className="text-accent-iridescent mt-1">⚠️</span>
                   <div>
@@ -109,14 +110,14 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
                     <p className="text-sm text-pearl-muted leading-relaxed">PEARL provides information only. Always consult healthcare professionals for medical advice.</p>
                   </div>
                 </div>
-              </div>
+              </PearlCard>
             </aside>
           )}
         </div>
 
         {/* Mobile Layout (full width) */}
         <div className="lg:hidden">
-          <div className="chat-card pearl-card overflow-hidden shadow-pearl-soft">
+          <PearlCard className="chat-card overflow-hidden shadow-pearl-soft">
             <div className="bg-pearl-surface px-6 py-4 border-b border-pearl-border shrink-0">
               <h2 className="text-xl font-semibold text-pearl-text">Chat with PEARL</h2>
               <p className="text-sm text-pearl-muted">Your AI medical companion</p>
@@ -127,7 +128,7 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
             <div className="chat-footer">
               <ChatInput onSendMessage={(msg) => handleSendMessage(msg)} isDisabled={isLoading} />
             </div>
-          </div>
+          </PearlCard>
 
           {/* Show Common Questions below chat on mobile/tablet */}
           <div className="mt-8 space-y-4">
@@ -160,7 +161,7 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
                 </button>
               </div>
 
-              <div className="mt-6 pearl-card p-4 shadow-pearl-soft no-hover">
+              <PearlCard className="mt-6 p-4 shadow-pearl-soft no-hover">
                 <div className="flex items-start space-x-2">
                   <span className="text-accent-iridescent mt-1">⚠️</span>
                   <div>
@@ -168,7 +169,7 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
                     <div className="text-sm text-pearl-muted">PEARL provides information only. Always consult healthcare professionals for medical advice.</div>
                   </div>
                 </div>
-              </div>
+              </PearlCard>
             </div>
           </div>
         </div>

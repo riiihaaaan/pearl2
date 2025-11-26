@@ -140,6 +140,8 @@
     align-items: start;
     width: 100%;
     box-sizing: border-box;
+    /* animate the grid change when sidebar collapses */
+    transition: grid-template-columns 260ms ease;
   }
 
   .chat-layout-grid .chat-card { grid-area: chat; }
@@ -147,8 +149,8 @@
 
   /* When sidebar is collapsed via class toggle */
   .chat-layout-grid.expanded {
-    grid-template-columns: 1fr;
-    grid-template-areas: "chat";
+    grid-template-columns: 1fr 0px;
+    grid-template-areas: "chat sidebar";
   }
 
   /* Defensive chat-card rules to prevent wrapping */
@@ -177,12 +179,25 @@
   }
 
   .chat-sidebar {
+    width: 360px;
     max-height: calc(78vh - 48px);
     overflow-y: auto;
     position: relative;
+    /* transition for CSS-only hide/show */
+    transition: opacity 220ms ease, transform 220ms ease, width 260ms ease;
+    will-change: transform, opacity, width;
   }
 
   .chat-sidebar .sticky { position: sticky; top: 28px; }
+
+  /* When grid is expanded, collapse sidebar visually but keep it in DOM to avoid layout jumps */
+  .chat-layout-grid.expanded .chat-sidebar {
+    opacity: 0;
+    transform: translateX(8px);
+    width: 0px;
+    pointer-events: none;
+    overflow: hidden;
+  }
 
   /* HOW IT WORKS CARD SYSTEM
      Specific styling for the "How It Works" step cards to ensure visual alignment */
@@ -307,8 +322,7 @@
     overflow-y: auto;
     overflow-x: hidden;
     padding: 0; /* MessageList handles its own padding */
-    /* aria-live polite for accessibility */
-    aria-live: polite;
+    /* aria-live is set on the DOM element for accessibility (not a CSS property) */
   }
 
   .chat-footer {
@@ -344,6 +358,7 @@
     border-radius: 999px; /* Fully rounded */
     padding: 12px 20px;
     box-shadow: 0 2px 8px rgba(138,160,220,0.1);
+    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     position: relative;
     transition: all 0.2s ease;
