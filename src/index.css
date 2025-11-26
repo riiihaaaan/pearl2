@@ -1,0 +1,25 @@
+.chat-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    grid-template-areas: "chat sidebar";
+    gap: 32px;
+    align-items: start;
+    transition: grid-template-columns 0.35s ease;
+  }
+  .chat-layout-grid .chat-card { grid-area: chat; }
+  .chat-layout-grid .chat-sidebar { grid-area: sidebar; align-self: start; }
+
+  /* Expanded state after first query */
+  .chat-layout-grid.expanded {
+    grid-template-columns: 1fr;
+    grid-template-areas: "chat";
+  }
+
+  /* Mobile collapse (existing behavior) */
+  @media (max-width: 1023px) {
+    .chat-layout-grid {
+      grid-template-columns: 1fr;
+      grid-template-areas: "chat"; /* optional, but keeps consistent */
+    }
+    .chat-sidebar { display: none; }
+  }

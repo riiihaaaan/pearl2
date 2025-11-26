@@ -279,14 +279,140 @@
     }
   }
 
+  /* CHATGPT-STYLE INPUT AND SITE WARNING */
+
+  /* Pill-style chat input (ChatGPT-like) */
+  .chat-input-pill {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.9);
+    border: 1px solid rgba(200,210,230,0.3);
+    border-radius: 999px; /* Fully rounded */
+    padding: 12px 20px;
+    box-shadow: 0 2px 8px rgba(138,160,220,0.1);
+    backdrop-filter: blur(8px);
+    position: relative;
+    transition: all 0.2s ease;
+  }
+
+  .chat-input-pill:hover {
+    box-shadow: 0 4px 12px rgba(138,160,220,0.15);
+  }
+
+  .chat-input-pill:focus-within {
+    border-color: rgba(154,179,255,0.4);
+    box-shadow: 0 2px 12px rgba(154,179,255,0.2);
+  }
+
+  /* Input textarea inside pill */
+  .chat-input-pill textarea {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    resize: none;
+    line-height: 1.4;
+    font-size: 15px;
+    color: #2B3547;
+    min-height: 20px;
+    max-height: 120px;
+    overflow-y: hidden;
+  }
+
+  .chat-input-pill textarea::placeholder {
+    color: #9CA3AF;
+  }
+
+  /* Send button inside pill */
+  .chat-input-pill button {
+    background: linear-gradient(135deg, #9AB3FF, #D6DBFF);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .chat-input-pill button:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 2px 6px rgba(154,179,255,0.3);
+  }
+
+  .chat-input-pill button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Plus icon for attachments (optional) */
+  .chat-input-pill .attachment-btn {
+    background: rgba(156,163,175,0.1);
+    color: #6B7280;
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .chat-input-pill .attachment-btn:hover {
+    background: rgba(156,163,175,0.2);
+  }
+
+  /* Site-level warning below chat card */
+  .site-disclaimer {
+    margin-top: 24px;
+    padding: 16px;
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(200,210,230,0.2);
+    border-radius: 12px;
+    text-align: center;
+    font-size: 13px;
+    color: #6B7280;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .site-disclaimer p {
+    margin: 0;
+    line-height: 1.4;
+  }
+
   /* DESKTOP CHAT LAYOUT SYSTEM
      Two-column grid with independently scrollable sidebar */
 
   .chat-layout-grid {
     display: grid;
     grid-template-columns: 1fr 340px;
+    grid-template-areas: "chat sidebar";
     gap: 32px;
     align-items: start;
+    transition: grid-template-columns 0.35s ease;
+  }
+  .chat-layout-grid .chat-card { grid-area: chat; }
+  .chat-layout-grid .chat-sidebar { grid-area: sidebar; align-self: start; }
+
+  /* Expanded state after first query */
+  .chat-layout-grid.expanded {
+    grid-template-columns: 1fr;
+    grid-template-areas: "chat";
+  }
+
+  /* Mobile collapse (existing behavior) */
+  @media (max-width: 1023px) {
+    .chat-layout-grid {
+      grid-template-columns: 1fr;
+      grid-template-areas: "chat";
+    }
+    .chat-sidebar { display: none; }
   }
 
   .chat-sidebar {
@@ -318,12 +444,5 @@
   /* Last item (Safety Reminder) has small bottom margin */
   .chat-sidebar .sidebar-card:last-child {
     margin-bottom: 8px;
-  }
-
-  /* Hide sidebar on mobile (already handled in ChatSection.jsx) */
-  @media (max-width: 1023px) {
-    .chat-sidebar {
-      display: none;
-    }
   }
 }

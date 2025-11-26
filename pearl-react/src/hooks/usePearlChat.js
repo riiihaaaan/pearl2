@@ -9,10 +9,23 @@ export const usePearlChat = () => {
   const [messages, setMessages] = useState([{
     id: '1',
     role: 'assistant',
-    content: "Hello! I'm PEARL, your calm AI medical companion. I'm here to help explain general health topics, decode medical jargon in simple terms, and suggest questions to prepare for your doctor's appointments. I'll never diagnose conditions or prescribe treatments—just provide caring, clear information to help you feel more confident about your health.\n\n*Please remember: I'm not a substitute for professional medical advice. For any health concerns, always consult licensed healthcare professionals.*"
+    content: "Hello! I'm PEARL, a calm AI medical companion. I'm here to help explain general health topics, decode medical jargon in simple terms, and suggest questions to prepare for your doctor's appointments. I'll never diagnose conditions or prescribe treatments—just provide caring, clear information to help you feel more confident about your health.\n\n*Please remember: I'm not a substitute for professional medical advice. For any health concerns, always consult licensed healthcare professionals.*"
   }]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [hasUserQueried, setHasUserQueried] = useState(() => {
+    // Check sessionStorage for persistence
+    return sessionStorage.getItem('pearl:hasUserQueried') === '1';
+  });
+
+  const updateHasUserQueried = useCallback((value) => {
+    setHasUserQueried(value);
+    if (value) {
+      sessionStorage.setItem('pearl:hasUserQueried', '1');
+    } else {
+      sessionStorage.removeItem('pearl:hasUserQueried');
+    }
+  }, []);
 
   /**
    * Send a message to the AI and update the chat
@@ -45,6 +58,8 @@ export const usePearlChat = () => {
       };
 
       setMessages(prev => [...prev, assistantMessage]);
+      // Mark that user has sent their first successful query
+      updateHasUserQueried(true);
     } catch (err) {
       console.error('Failed to get AI response:', err);
       setError(err.message);
@@ -60,7 +75,7 @@ export const usePearlChat = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [isLoading]);
+  }, [isLoading, updateHasUserQueried]);
 
   /**
    * Clear the chat and reset to initial state
@@ -78,6 +93,8 @@ export const usePearlChat = () => {
     messages,
     isLoading,
     error,
+    hasUserQueried,
+    updateHasUserQueried,
     sendMessage,
     clearChat
   };

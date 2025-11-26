@@ -1,8 +1,7 @@
 import React, { useState, useRef } from 'react';
-import Button from './Button';
 
 /**
- * Chat input component with textarea and send button
+ * ChatGPT-style pill input component with integrated send button
  */
 const ChatInput = ({ onSendMessage, isDisabled = false }) => {
   const [message, setMessage] = useState('');
@@ -44,36 +43,40 @@ const ChatInput = ({ onSendMessage, isDisabled = false }) => {
     }
   };
 
-  // Optional: Re-enable focus if user has interacted, but not on initial mount
-  // For now, removed to prevent auto-jumping to chat
-  // useEffect(() => {
-  //   if (textareaRef.current && !isDisabled) {
-  //     textareaRef.current.focus();
-  //   }
-  // }, [isDisabled]);
-
   return (
-    <div className="flex gap-3 p-6 bg-pearl-bg border-t border-pearl-border-soft">
-      <div className="flex-1 relative">
-        <textarea
-          ref={textareaRef}
-          value={message}
-          onChange={handleTextareaChange}
-          onKeyDown={handleKeyDown}
-          placeholder="Describe a health concern, medical term, or appointment worry in your own words..."
-          disabled={isDisabled}
-          rows={1}
-          className="w-full px-5 py-4 bg-pearl-surface/75 backdrop-blur-sm border border-pearl-border rounded-3xl resize-none focus:outline-none focus:ring-2 focus:ring-accent-iridescent focus:border-accent-iridescent placeholder-pearl-muted text-pearl-text min-h-[48px] max-h-32 overflow-y-auto"
-        />
-      </div>
-      <Button
+    <div className="chat-input-pill" role="region" aria-label="Message input">
+      {/* Optional attachment button (placeholder for future feature) */}
+      {/* <button className="attachment-btn" aria-label="Add attachment">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M21 15V19a2 2 0 01-2 2H5a2 2 0 01-2-2V15"/>
+          <rect x="7" y="9" width="10" height="8" rx="1" ry="1"/>
+          <circle cx="9.5" cy="11.5" r="0.5"/>
+          <circle cx="14.5" cy="11.5" r="0.5"/>
+        </svg>
+      </button> */}
+
+      <textarea
+        ref={textareaRef}
+        value={message}
+        onChange={handleTextareaChange}
+        onKeyDown={handleKeyDown}
+        placeholder="Ask anything about health concerns, medical terms, or appointment questions..."
+        disabled={isDisabled}
+        aria-label="Type your health question here"
+        aria-describedby="input-instructions"
+      />
+
+      <button
         onClick={handleSubmit}
-        variant="primary"
         disabled={!message.trim() || isDisabled}
-        className="px-8 py-4 whitespace-nowrap shrink-0"
+        aria-label={message.trim() ? "Send message" : "Type a message to send"}
+        aria-describedby="input-instructions"
       >
-        Send
-      </Button>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <line x1="22" y1="2" x2="11" y2="13"/>
+          <polygon points="22,2 15,22 11,13 2,9"/>
+        </svg>
+      </button>
     </div>
   );
 };
