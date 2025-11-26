@@ -131,6 +131,59 @@
     margin-right: auto;
   }
 
+  /* Chat layout grid to ensure deterministic two-column layout */
+  .chat-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 360px; /* main chat and fixed sidebar */
+    grid-template-areas: "chat sidebar";
+    gap: 28px;
+    align-items: start;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .chat-layout-grid .chat-card { grid-area: chat; }
+  .chat-layout-grid .chat-sidebar { grid-area: sidebar; align-self: start; }
+
+  /* When sidebar is collapsed via class toggle */
+  .chat-layout-grid.expanded {
+    grid-template-columns: 1fr;
+    grid-template-areas: "chat";
+  }
+
+  /* Defensive chat-card rules to prevent wrapping */
+  .chat-card {
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    min-width: 0; /* allow the column to shrink inside grid */
+    display: flex;
+    flex-direction: column;
+    min-height: 520px;
+    max-height: 78vh;
+    overflow: hidden;
+  }
+
+  /* Messages container inside chat card */
+  .chat-messages {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    min-width: 0;
+    max-height: calc(78vh - 140px);
+  }
+
+  .chat-footer {
+    flex: 0 0 auto;
+  }
+
+  .chat-sidebar {
+    max-height: calc(78vh - 48px);
+    overflow-y: auto;
+    position: relative;
+  }
+
+  .chat-sidebar .sticky { position: sticky; top: 28px; }
+
   /* HOW IT WORKS CARD SYSTEM
      Specific styling for the "How It Works" step cards to ensure visual alignment */
   .how-card {
@@ -427,6 +480,8 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 340px; /* Ensure total width matches grid-column size */
+    box-sizing: border-box;
   }
 
   /* Compact title spacing */

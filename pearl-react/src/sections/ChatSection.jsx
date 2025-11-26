@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import MessageList from '../components/MessageList';
 import ChatInput from '../components/ChatInput';
 import TypingIndicator from '../components/TypingIndicator';
@@ -11,6 +11,27 @@ import { usePearlChat } from '../hooks/usePearlChat';
 const ChatSection = ({ className = '', id = 'chat' }) => {
   const { messages, isLoading, sendMessage, hasUserQueried, updateHasUserQueried } = usePearlChat();
 
+  // Refs for layout elements
+  const gridRef = useRef(null);
+  const sidebarRef = useRef(null);
+
+  // Wrapper to send message and collapse sidebar on first query (CSS-only transition)
+  const handleSendMessage = (text) => {
+    sendMessage(text);
+    if (!hasUserQueried) {
+      // Toggle expanded class; CSS transitions handle the animation
+      if (gridRef.current) gridRef.current.classList.add('expanded');
+      updateHasUserQueried(true);
+    }
+  };
+
+  // Ensure layout reflects persisted state on mount
+  useEffect(() => {
+    if (hasUserQueried && gridRef.current) {
+      gridRef.current.classList.add('expanded');
+    }
+  }, [hasUserQueried]);
+
   return (
     <section
       id={id}
@@ -19,10 +40,10 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Desktop Layout (two-column grid) */}
-        <div className={`hidden lg:block chat-layout-grid ${hasUserQueried ? 'expanded' : ''}`} id="chat-layout" aria-live="polite">
+        <div ref={gridRef} className={`hidden lg:grid chat-layout-grid h-[600px] ${hasUserQueried ? 'expanded' : ''}`}>
           {/* Chat Area */}
           <section id="chat-area" className="chat-card pearl-card overflow-hidden shadow-pearl-soft" role="region" aria-label="Chat with PEARL">
-            <div className="bg-pearl-surface px-6 py-4 border-b border-pearl-border flex-shrink-0">
+            <div className="bg-pearl-surface px-6 py-4 border-b border-pearl-border shrink-0">
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-xl font-semibold text-pearl-text">Chat with PEARL</h2>
@@ -45,17 +66,17 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
               <MessageList messages={messages} isLoading={isLoading} TypingIndicator={TypingIndicator} />
             </div>
             <div className="chat-footer">
-              <ChatInput onSendMessage={sendMessage} isDisabled={isLoading} />
+              <ChatInput onSendMessage={(msg) => handleSendMessage(msg)} isDisabled={isLoading} />
             </div>
           </section>
 
           {/* Sidebar with independent scrolling - only show if user hasn't queried yet */}
           {!hasUserQueried && (
-            <aside id="common-questions" className="chat-sidebar pearl-card shadow-pearl-soft" role="complementary" aria-label="Common Questions">
+            <aside ref={sidebarRef} id="common-questions" className="chat-sidebar pearl-card shadow-pearl-soft" role="complementary" aria-label="Common Questions">
               <h3 className="text-lg font-semibold text-pearl-text">Common Questions</h3>
               <div>
                 <button
-                  onClick={() => sendMessage("What does 'hypertension' mean?")}
+                  onClick={() => handleSendMessage("What does 'hypertension' mean?")}
                   className="w-full sidebar-card pearl-card text-left text-pearl-muted hover:text-pearl-text no-hover"
                   disabled={isLoading}
                 >
@@ -63,7 +84,7 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
                   <p className="text-sm text-pearl-muted leading-relaxed">Understand blood pressure terminology</p>
                 </button>
                 <button
-                  onClick={() => sendMessage("How should I prepare for a doctor's visit?")}
+                  onClick={() => handleSendMessage("How should I prepare for a doctor's visit?")}
                   className="w-full sidebar-card pearl-card text-left text-pearl-muted hover:text-pearl-text no-hover"
                   disabled={isLoading}
                 >
@@ -71,7 +92,7 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
                   <p className="text-sm text-pearl-muted leading-relaxed">Make the most of your appointment</p>
                 </button>
                 <button
-                  onClick={() => sendMessage("What are common healthy eating guidelines?")}
+                  onClick={() => handleSendMessage("What are common healthy eating guidelines?")}
                   className="w-full sidebar-card pearl-card text-left text-pearl-muted hover:text-pearl-text no-hover"
                   disabled={isLoading}
                 >
@@ -96,7 +117,7 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
         {/* Mobile Layout (full width) */}
         <div className="lg:hidden">
           <div className="chat-card pearl-card overflow-hidden shadow-pearl-soft">
-            <div className="bg-pearl-surface px-6 py-4 border-b border-pearl-border flex-shrink-0">
+            <div className="bg-pearl-surface px-6 py-4 border-b border-pearl-border shrink-0">
               <h2 className="text-xl font-semibold text-pearl-text">Chat with PEARL</h2>
               <p className="text-sm text-pearl-muted">Your AI medical companion</p>
             </div>
@@ -104,7 +125,7 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
               <MessageList messages={messages} isLoading={isLoading} TypingIndicator={TypingIndicator} />
             </div>
             <div className="chat-footer">
-              <ChatInput onSendMessage={sendMessage} isDisabled={isLoading} />
+              <ChatInput onSendMessage={(msg) => handleSendMessage(msg)} isDisabled={isLoading} />
             </div>
           </div>
 
@@ -114,7 +135,7 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
               <h3 className="text-lg font-semibold text-pearl-text text-center mb-4">Common Questions</h3>
               <div className="space-y-3">
                 <button
-                  onClick={() => sendMessage("What does 'hypertension' mean?")}
+                  onClick={() => handleSendMessage("What does 'hypertension' mean?")}
                   className="w-full pearl-card p-4 text-left text-pearl-muted hover:text-pearl-text no-hover"
                   disabled={isLoading}
                 >
@@ -122,7 +143,7 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
                   <div className="text-sm text-pearl-muted">Understand blood pressure terminology</div>
                 </button>
                 <button
-                  onClick={() => sendMessage("How should I prepare for a doctor's visit?")}
+                  onClick={() => handleSendMessage("How should I prepare for a doctor's visit?")}
                   className="w-full pearl-card p-4 text-left text-pearl-muted hover:text-pearl-text no-hover"
                   disabled={isLoading}
                 >
@@ -130,7 +151,7 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
                   <div className="text-sm text-pearl-muted">Make the most of your appointment</div>
                 </button>
                 <button
-                  onClick={() => sendMessage("What are common healthy eating guidelines?")}
+                  onClick={() => handleSendMessage("What are common healthy eating guidelines?")}
                   className="w-full pearl-card p-4 text-left text-pearl-muted hover:text-pearl-text no-hover"
                   disabled={isLoading}
                 >

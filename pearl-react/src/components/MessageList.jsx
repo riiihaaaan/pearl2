@@ -45,7 +45,7 @@ const MessageList = ({ messages, className = '', isLoading = false, TypingIndica
   return (
     <div
       ref={containerRef}
-      className={`h-full overflow-y-auto px-6 py-4 space-y-0 ${className}`}
+      className={`chat-messages h-full overflow-y-auto px-6 py-4 space-y-0 ${className}`}
       aria-live="polite"
     >
       {messages.map((message) => (
