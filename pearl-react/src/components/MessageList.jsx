@@ -4,7 +4,7 @@ import ChatBubble from './ChatBubble';
 /**
  * Message list component that displays chat messages and auto-scrolls smartly
  */
-const MessageList = ({ messages, className = '' }) => {
+const MessageList = ({ messages, className = '', isLoading = false, TypingIndicator }) => {
   const containerRef = useRef(null);
   const prevMessageCountRef = useRef(0);
 
@@ -45,11 +45,13 @@ const MessageList = ({ messages, className = '' }) => {
   return (
     <div
       ref={containerRef}
-      className={`flex-1 overflow-y-auto px-6 py-4 space-y-0 ${className}`}
+      className={`h-full overflow-y-auto px-6 py-4 space-y-0 ${className}`}
+      aria-live="polite"
     >
       {messages.map((message) => (
         <ChatBubble key={message.id} message={message} />
       ))}
+      {isLoading && TypingIndicator && <TypingIndicator />}
     </div>
   );
 };

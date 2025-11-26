@@ -131,6 +131,72 @@
     margin-right: auto;
   }
 
+  /* HOW IT WORKS CARD SYSTEM
+     Specific styling for the "How It Works" step cards to ensure visual alignment */
+  .how-card {
+    width: 100%; /* Mobile full width by default */
+    min-height: 320px; /* Consistent min height on desktop */
+    border: 1px solid rgba(200,210,230,0.35);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(138,160,220,0.08);
+    /* Padding uses responsive defaults from pearl-card */
+  }
+
+  /* Responsive widths for specific breakpoints */
+  @media (min-width: 768px) {
+    .how-card {
+      /* Tablet: 180-210px width */
+      width: 200px;
+      min-width: 180px;
+      max-width: 210px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .how-card {
+      /* Desktop: 220-260px width */
+      width: 240px;
+      min-width: 220px;
+      max-width: 260px;
+      min-height: 320px;
+    }
+  }
+
+  /* Constrain title block content */
+  .how-card .how-card-title {
+    text-align: center;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  /* Grid layout for cards */
+  .how-grid {
+    display: grid;
+    align-items: start; /* Align to top for consistent appearance */
+  }
+
+  /* Mobile: single column, full width cards */
+  .how-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* Tablet: 2 columns */
+  @media (min-width: 768px) {
+    .how-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+  }
+
+  /* Desktop: 4 columns */
+  @media (min-width: 1024px) {
+    .how-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 48px;
+    }
+  }
+
   .btn-pearl {
     background: linear-gradient(135deg, var(--accent-iridescent), var(--accent-iridescent-2));
     color: white;
@@ -170,5 +236,94 @@
   .bg-pearl-decal {
     background: radial-gradient(circle at center, transparent 30%, var(--accent-iridescent-2) 70%);
     opacity: 0.1;
+  }
+
+  /* CHAT SECTION LAYOUT SYSTEM
+     Structured vertical layout for chat interface with contained scrolling */
+
+  .chat-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 520px;
+    max-height: 78vh;
+    /* box-sizing, border, shadow inherited from pearl-card */
+  }
+
+  .chat-messages {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0; /* MessageList handles its own padding */
+    /* aria-live polite for accessibility */
+    aria-live: polite;
+  }
+
+  .chat-footer {
+    flex: 0 0 auto;
+    margin-top: 0; /* Remove default spacing */
+  }
+
+  /* Desktop layout constraints */
+  @media (min-width: 1024px) {
+    .chat-card {
+      min-height: 400px;
+      max-height: 600px;
+    }
+  }
+
+  /* Mobile viewport adjustments */
+  @media (max-width: 767px) {
+    .chat-card {
+      min-height: 480px;
+      max-height: 85vh;
+    }
+  }
+
+  /* DESKTOP CHAT LAYOUT SYSTEM
+     Two-column grid with independently scrollable sidebar */
+
+  .chat-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .chat-sidebar {
+    max-height: 78vh; /* Match chat-card max-height */
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+    /* Optional sticky behavior to keep sidebar visible */
+    position: sticky;
+    top: 24px;
+    /* Ensure consistent stacking of content */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Compact title spacing */
+  .chat-sidebar h3 {
+    margin-bottom: 16px;
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 600;
+  }
+
+  /* Consistent card spacing */
+  .chat-sidebar .sidebar-card {
+    margin-bottom: 16px;
+  }
+
+  /* Last item (Safety Reminder) has small bottom margin */
+  .chat-sidebar .sidebar-card:last-child {
+    margin-bottom: 8px;
+  }
+
+  /* Hide sidebar on mobile (already handled in ChatSection.jsx) */
+  @media (max-width: 1023px) {
+    .chat-sidebar {
+      display: none;
+    }
   }
 }

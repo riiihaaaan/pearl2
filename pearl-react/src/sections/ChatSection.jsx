@@ -17,26 +17,29 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
       style={{ position: 'relative', zIndex: 30 }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Desktop Layout (side by side) */}
-        <div className="hidden lg:flex gap-8 h-[600px]">
+        {/* Desktop Layout (two-column grid) */}
+        <div className="hidden lg:block chat-layout-grid">
           {/* Chat Area */}
-          <div className="flex-1 pearl-card overflow-hidden shadow-pearl-soft">
-            <div className="bg-pearl-surface px-6 py-4 border-b border-pearl-border">
+          <div className="chat-card pearl-card overflow-hidden shadow-pearl-soft">
+            <div className="bg-pearl-surface px-6 py-4 border-b border-pearl-border flex-shrink-0">
               <h2 className="text-xl font-semibold text-pearl-text">Chat with PEARL</h2>
               <p className="text-sm text-pearl-muted">Your AI medical companion</p>
             </div>
-            <MessageList messages={messages} />
-            {isLoading && <TypingIndicator />}
-            <ChatInput onSendMessage={sendMessage} isDisabled={isLoading} />
+            <div className="chat-messages">
+              <MessageList messages={messages} isLoading={isLoading} TypingIndicator={TypingIndicator} />
+            </div>
+            <div className="chat-footer">
+              <ChatInput onSendMessage={sendMessage} isDisabled={isLoading} />
+            </div>
           </div>
 
-          {/* Side Panel */}
-          <div className="w-80 pearl-card shadow-pearl-soft">
-            <h3 className="text-lg font-semibold text-pearl-text mb-4">Common Questions</h3>
-            <div className="space-y-3">
+          {/* Sidebar with independent scrolling */}
+          <div className="chat-sidebar pearl-card shadow-pearl-soft">
+            <h3 className="text-lg font-semibold text-pearl-text">Common Questions</h3>
+            <div>
               <button
                 onClick={() => sendMessage("What does 'hypertension' mean?")}
-                className="w-full pearl-card text-left text-pearl-muted hover:text-pearl-text no-hover"
+                className="w-full sidebar-card pearl-card text-left text-pearl-muted hover:text-pearl-text no-hover"
                 disabled={isLoading}
               >
                 <h3 className="text-lg font-semibold text-pearl-text mb-2 max-w-prose">What does "hypertension" mean?</h3>
@@ -44,7 +47,7 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
               </button>
               <button
                 onClick={() => sendMessage("How should I prepare for a doctor's visit?")}
-                className="w-full pearl-card text-left text-pearl-muted hover:text-pearl-text no-hover"
+                className="w-full sidebar-card pearl-card text-left text-pearl-muted hover:text-pearl-text no-hover"
                 disabled={isLoading}
               >
                 <h3 className="text-lg font-semibold text-pearl-text mb-2 max-w-prose">How should I prepare for a doctor's visit?</h3>
@@ -52,7 +55,7 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
               </button>
               <button
                 onClick={() => sendMessage("What are common healthy eating guidelines?")}
-                className="w-full pearl-card text-left text-pearl-muted hover:text-pearl-text no-hover"
+                className="w-full sidebar-card pearl-card text-left text-pearl-muted hover:text-pearl-text no-hover"
                 disabled={isLoading}
               >
                 <h3 className="text-lg font-semibold text-pearl-text mb-2 max-w-prose">What are common healthy eating guidelines?</h3>
@@ -60,7 +63,7 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
               </button>
             </div>
 
-            <div className="mt-8 pearl-card shadow-pearl-soft no-hover">
+            <div className="sidebar-card pearl-card shadow-pearl-soft no-hover">
               <div className="flex items-start space-x-2">
                 <span className="text-accent-iridescent mt-1">⚠️</span>
                 <div>
@@ -74,14 +77,17 @@ const ChatSection = ({ className = '', id = 'chat' }) => {
 
         {/* Mobile Layout (full width) */}
         <div className="lg:hidden">
-          <div className="pearl-card overflow-hidden shadow-pearl-soft">
-            <div className="bg-pearl-surface px-6 py-4 border-b border-pearl-border">
+          <div className="chat-card pearl-card overflow-hidden shadow-pearl-soft">
+            <div className="bg-pearl-surface px-6 py-4 border-b border-pearl-border flex-shrink-0">
               <h2 className="text-xl font-semibold text-pearl-text">Chat with PEARL</h2>
               <p className="text-sm text-pearl-muted">Your AI medical companion</p>
             </div>
-            <MessageList messages={messages} />
-            {isLoading && <TypingIndicator />}
-            <ChatInput onSendMessage={sendMessage} isDisabled={isLoading} />
+            <div className="chat-messages">
+              <MessageList messages={messages} isLoading={isLoading} TypingIndicator={TypingIndicator} />
+            </div>
+            <div className="chat-footer">
+              <ChatInput onSendMessage={sendMessage} isDisabled={isLoading} />
+            </div>
           </div>
         </div>
       </div>
