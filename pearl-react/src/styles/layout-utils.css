@@ -1,0 +1,3 @@
+/* Defensive layout helpers */
+.min-width-0 { min-width: 0 !important; }
+.box-border { box-sizing: border-box; }

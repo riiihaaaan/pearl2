@@ -15,7 +15,7 @@ Remember: Your responses should guide users toward professional help, not replac
 
 export const MODEL = "llama3";
 export const TEMPERATURE = 0.5;
-export const MAX_TOKENS = 100;
+export const MAX_TOKENS = 1000;
 
 // Navigation
 export const NAV_LINKS = [

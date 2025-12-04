@@ -1,0 +1,11 @@
+/* ChatCard specific styles */
+.chat-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 480px;
+  max-height: 78vh;
+  box-sizing: border-box;
+  min-width: 0;
+}
+.chat-card .chat-messages { flex: 1 1 auto; overflow-y: auto; min-width: 0; }
+.chat-card .chat-footer { flex: 0 0 auto; }
