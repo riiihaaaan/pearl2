@@ -16,12 +16,12 @@ const NavBar = ({ className = '' }) => {
   };
 
   return (
-    <nav className={`bg-pearl-background border-b border-pearl-border sticky top-0 z-50 ${className}`}>
+    <nav className={`bg-pearl-bg/90 backdrop-blur-md border-b border-pearl-border sticky top-0 z-50 ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-gradient bg-gradient-to-r from-accent-blue-500 to-accent-blue-400 bg-clip-text text-transparent">
+            <h1 className="text-2xl font-bold bg-linear-to-r from-accent-iridescent to-accent-iridescent-200 bg-clip-text text-transparent">
               PEARL
             </h1>
           </div>
@@ -32,7 +32,7 @@ const NavBar = ({ className = '' }) => {
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="text-pearl-secondary hover:text-accent-blue transition-colors duration-200 font-medium"
+                className="text-pearl-muted hover:text-accent-iridescent transition-colors duration-200 font-medium"
               >
                 {link.label}
               </button>
@@ -43,7 +43,7 @@ const NavBar = ({ className = '' }) => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-pearl-secondary hover:text-accent-blue hover:bg-pearl-surface transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent-blue"
+              className="inline-flex items-center justify-center p-2 rounded-md text-pearl-muted hover:text-accent-iridescent hover:bg-pearl-surface transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-accent-iridescent"
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
@@ -64,12 +64,12 @@ const NavBar = ({ className = '' }) => {
       {/* Mobile Navigation Menu */}
       {isMenuOpen && (
         <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 bg-pearl-background border-t border-pearl-border">
+          <div className="px-2 pt-2 pb-3 space-y-1 bg-pearl-bg/95 border-t border-pearl-border backdrop-blur-md">
             {NAV_LINKS.map((link) => (
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className="block px-3 py-2 text-pearl-secondary hover:text-accent-blue hover:bg-pearl-surface transition-colors duration-200 rounded-md text-base font-medium w-full text-left"
+                className="block px-3 py-2 text-pearl-muted hover:text-accent-iridescent hover:bg-pearl-surface transition-colors duration-200 rounded-md text-base font-medium w-full text-left"
               >
                 {link.label}
               </button>

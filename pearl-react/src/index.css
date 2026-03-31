@@ -208,7 +208,7 @@
     background: var(--pearl-surface);
     color: var(--pearl-text);
     border-radius: 16px 16px 16px 4px;
-    padding: 12px 16px;
+    padding: 16px 20px;
     border: 1px solid var(--pearl-border);
     box-shadow: var(--shadow-pearl);
   }
@@ -217,7 +217,7 @@
     background: var(--accent-iridescent);
     color: white;
     border-radius: 16px 16px 4px 16px;
-    padding: 12px 16px;
+    padding: 16px 20px;
     box-shadow: var(--shadow-pearl);
   }
 

@@ -38,10 +38,8 @@ export const useScrollAnimation = (animationId = null) => {
     });
 
     return () => {
-      if (tl) tl.kill();
-      if (elementRef.current) {
-        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      }
+      tl?.scrollTrigger?.kill();
+      tl?.kill();
     };
   }, [animationId]);
 
@@ -62,7 +60,7 @@ export const useStaggeredAnimation = (itemsCount, staggerDelay = 0.1) => {
 
     gsap.set(cards, { opacity: 0, y: 20 });
 
-    ScrollTrigger.create({
+    const trigger = ScrollTrigger.create({
       trigger: container,
       start: 'top 80%',
       onEnter: () => {
@@ -80,7 +78,8 @@ export const useStaggeredAnimation = (itemsCount, staggerDelay = 0.1) => {
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      trigger?.kill();
+      gsap.killTweensOf(cards);
     };
   }, [itemsCount, staggerDelay]);
 

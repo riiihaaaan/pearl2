@@ -10,22 +10,23 @@ const PearlSceneCanvas = ({ className = '' }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    if (orbRef.current) {
+    const orb = orbRef.current;
+    if (orb) {
       // Calm vertical floating animation - 6s cycle with subtle amplitude
       // Creates living, breathing presence inspired by pearl reference
-      gsap.to(orbRef.current, {
+      gsap.to(orb, {
         y: 12,
         duration: 6,
         ease: "power1.inOut",
         repeat: -1,
         yoyo: true,
         onStart: () => {
-          gsap.set(orbRef.current, { y: -12 });
+          gsap.set(orb, { y: -12 });
         }
       });
 
       // Very subtle rotation for iridescent pearl effect
-      gsap.to(orbRef.current, {
+      gsap.to(orb, {
         rotation: 360,
         duration: 20, // Slow rotation over 20 seconds
         ease: "none",
@@ -34,7 +35,7 @@ const PearlSceneCanvas = ({ className = '' }) => {
     }
 
     return () => {
-      gsap.killTweensOf(orbRef.current);
+      if (orb) gsap.killTweensOf(orb);
     };
   }, []);
 

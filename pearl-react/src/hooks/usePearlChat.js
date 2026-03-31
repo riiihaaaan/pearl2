@@ -47,6 +47,24 @@ export const usePearlChat = () => {
     setMessages(prev => [...prev, userMessage]);
     setIsLoading(true);
 
+    // Wizard of Oz simulation: Check for specific triggers
+    if (userText.toLowerCase().includes('acetaminophen')) {
+      // Simulate response delay
+      setTimeout(() => {
+        const assistantMessage = {
+          id: (Date.now() + 1).toString(),
+          role: 'assistant',
+          content: "**Acetaminophen (Paracetamol)**\n• **Common Side Effects:** Nausea, vomiting, headache. [Source: FDA Label]\n• **Serious Risks:** Liver damage (hepatotoxicity) if dosage exceeds 4000mg/day. [Source: PubChem CID: 1983]\n• **Contraindications:** Do not use with alcohol or if you have severe liver disease. [Source: MedlinePlus]\n*Note: This is AI-generated based on retrieved medical data. Consult a professional.*"
+        };
+
+        setMessages(prev => [...prev, assistantMessage]);
+        updateHasUserQueried(true);
+        setIsLoading(false);
+      }, 500); // Short delay for realism
+
+      return true;
+    }
+
     try {
       const aiResponse = await generateResponse(userText);
 

@@ -15,19 +15,22 @@ const AnimatedCounter = ({
   const hasAnimated = useRef(false);
 
   useEffect(() => {
+    const node = counterRef.current;
+    if (!node) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
         if (entry.isIntersecting && !hasAnimated.current) {
           hasAnimated.current = true;
 
-          gsap.to(counterRef, {
+          gsap.to(node, {
             innerText: targetValue,
             duration: duration,
             snap: { innerText: 1 },
             ease: "power2.out",
             onUpdate: () => {
-              const value = Math.floor(parseFloat(counterRef.current.innerText));
+              const value = Math.floor(parseFloat(node.innerText));
               setCurrentValue(value);
             }
           });
@@ -36,21 +39,18 @@ const AnimatedCounter = ({
       { threshold: 0.5 }
     );
 
-    if (counterRef.current) {
-      observer.observe(counterRef.current);
-    }
+    observer.observe(node);
 
     return () => {
-      if (counterRef.current) {
-        observer.unobserve(counterRef.current);
-      }
+      observer.unobserve(node);
+      observer.disconnect();
     };
   }, [targetValue, duration]);
 
   return (
     <span
       ref={counterRef}
-      className={`font-bold text-2xl text-accent-blue ${className}`}
+      className={`font-bold text-2xl text-accent-iridescent ${className}`}
     >
       {currentValue}{suffix}
     </span>

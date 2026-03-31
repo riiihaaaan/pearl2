@@ -9,7 +9,8 @@ const ChatBubble = ({ message, className = '' }) => {
   const [enter, setEnter] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setEnter(true), 10); // Small delay to ensure render
+    const timer = setTimeout(() => setEnter(true), 10); // Small delay to ensure render
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -29,9 +30,8 @@ const ChatBubble = ({ message, className = '' }) => {
       >
         <MarkdownRenderer
           content={message.content}
-          className={`${
-            isAssistant ? 'prose-invert' : ''
-          } child:last:mb-0`}
+          tone={isAssistant ? 'assistant' : 'user'}
+          className="child:last:mb-0"
         />
       </div>
     </div>

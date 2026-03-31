@@ -65,7 +65,6 @@ const useDraggableNodes = (nodesData) => {
 
   const containerRef = useRef(null);
   const animationFrameRef = useRef(null);
-  const persistenceTimeoutRef = useRef(null);
 
   const currentPositionsRef = useRef(positions);
 
@@ -237,9 +236,6 @@ const useDraggableNodes = (nodesData) => {
     return () => {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
-      }
-      if (persistenceTimeoutRef.current) {
-        clearTimeout(persistenceTimeoutRef.current);
       }
     };
   }, []);

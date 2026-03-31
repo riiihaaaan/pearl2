@@ -25,9 +25,12 @@ export const usePearlAnimations = () => {
       const buttonsRef = useRef();
 
       useEffect(() => {
+        const textEl = textRef.current;
+        const buttonEls = buttonsRef.current ? Array.from(buttonsRef.current.children) : [];
+
         // Hero text fade in with upward motion
-        if (textRef.current) {
-          gsap.fromTo(textRef.current, {
+        if (textEl) {
+          gsap.fromTo(textEl, {
             opacity: 0,
             y: 20,
           }, {
@@ -40,8 +43,8 @@ export const usePearlAnimations = () => {
         }
 
         // Hero buttons gentle scale-in
-        if (buttonsRef.current) {
-          gsap.fromTo(buttonsRef.current.children, {
+        if (buttonEls.length > 0) {
+          gsap.fromTo(buttonEls, {
             opacity: 0,
             scale: 0.95,
           }, {
@@ -55,7 +58,8 @@ export const usePearlAnimations = () => {
         }
 
         return () => {
-          gsap.killTweensOf([textRef.current, ...(buttonsRef.current?.children || [])]);
+          if (textEl) gsap.killTweensOf(textEl);
+          if (buttonEls.length > 0) gsap.killTweensOf(buttonEls);
         };
       }, []);
 
@@ -71,7 +75,7 @@ export const usePearlAnimations = () => {
         if (!element) return;
 
         // General section fade-up with calm timing
-        gsap.fromTo(element, {
+        const tween = gsap.fromTo(element, {
           opacity: 0,
           y: 20,
         }, {
@@ -87,8 +91,8 @@ export const usePearlAnimations = () => {
         });
 
         return () => {
-          if (element) ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-          gsap.killTweensOf(element);
+          tween?.scrollTrigger?.kill();
+          tween?.kill();
         };
       }, [delay]);
 
@@ -106,7 +110,7 @@ export const usePearlAnimations = () => {
         const cards = grid.children;
         gsap.set(cards, { opacity: 0, y: 20 });
 
-        ScrollTrigger.create({
+        const trigger = ScrollTrigger.create({
           trigger: grid,
           start: 'top 80%',
           onEnter: () => {
@@ -132,7 +136,8 @@ export const usePearlAnimations = () => {
         });
 
         return () => {
-          ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+          trigger?.kill();
+          gsap.killTweensOf(cards);
         };
       }, [cardCount]);
 
@@ -153,7 +158,7 @@ export const usePearlAnimations = () => {
 
         gsap.set(steps, { opacity: 0, x: -30 });
 
-        ScrollTrigger.create({
+        const trigger = ScrollTrigger.create({
           trigger: container,
           start: 'top 75%',
           onEnter: () => {
@@ -171,7 +176,8 @@ export const usePearlAnimations = () => {
         });
 
         return () => {
-          ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+          trigger?.kill();
+          gsap.killTweensOf(steps);
         };
       }, [stepCount]);
 
@@ -196,7 +202,7 @@ export const usePearlAnimations = () => {
         });
 
         // Animate on scroll when sections enter
-        ScrollTrigger.batch(lines, {
+        const batch = ScrollTrigger.batch(lines, {
           start: 'top 90%',
           onEnter: batch => gsap.to(batch, {
             strokeDashoffset: 0,
@@ -212,7 +218,12 @@ export const usePearlAnimations = () => {
         });
 
         return () => {
-          ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+          if (Array.isArray(batch)) {
+            batch.forEach((trigger) => trigger.kill());
+          } else {
+            batch?.kill?.();
+          }
+          gsap.killTweensOf(lines);
         };
       }, []);
 
